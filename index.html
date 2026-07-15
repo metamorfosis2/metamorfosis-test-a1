@@ -1264,4 +1264,202 @@ function mostrarExito(s, fecha, total){
         (canalElegido ? " por <strong>" + (canalElegido==="VIDEOLLAMADA"?"videollamada":"llamada") + "</strong>" : "") + ".";
   // Botón de WhatsApp con el mensaje listo (sin mencionar el servicio).
   // Se usa \u{1F98B} (escape unicode) en vez del emoji literal para evitar que
-  // se corrompa (rombo con "?") si el archivo se 
+  // se corrompa (rombo con "?") si el archivo se guarda/copia con otra codificación.
+  const btnWsp = document.getElementById("btn-wsp-comp");
+  if(btnWsp && CONFIG.WHATSAPP){
+    const nombre = document.getElementById("in-nombre").value.trim();
+    const texto = fueAsinc
+      ? "Hola! Soy " + nombre + " \u{1F98B} Acabo de reservar y te envío mi comprobante de transferencia."
+      : "Hola! Soy " + nombre + " \u{1F98B} Acabo de reservar para el " + fecha + " a las " + slotElegido + " hrs y te envío mi comprobante de transferencia.";
+    btnWsp.href = "https://wa.me/" + CONFIG.WHATSAPP.replace(/\D/g,"") + "?text=" + encodeURIComponent(texto);
+  }
+  document.getElementById("bloque-exito").classList.remove("oculto");
+}
+
+/** Vuelve a mostrar el formulario para agendar un servicio nuevo después de una reserva exitosa */
+function reiniciarFormularioReserva(){
+  document.getElementById("bloque-exito").classList.add("oculto");
+  document.getElementById("form-reserva").classList.remove("oculto");
+  document.getElementById("sel-servicio").value = "";
+  document.getElementById("in-nombre").value = "";
+  document.getElementById("in-telefono").value = "+56 9 ";
+  document.getElementById("in-correo").value = "";
+  document.getElementById("chk-consent").checked = false;
+  const btn = document.getElementById("btn-reservar");
+  btn.disabled = false; btn.textContent = "Reservar mi hora";
+  alCambiarServicio(); // limpia variante/canal/hora y oculta los grupos, ya sin servicio elegido
+}
+
+function mostrarError(txt){
+  const el = document.getElementById("msg-error");
+  el.textContent = txt; el.classList.remove("oculto");
+}
+function ocultarError(){ document.getElementById("msg-error").classList.add("oculto"); }
+
+/* El comprobante ahora se envía por WhatsApp (botón en la pantalla de éxito).
+   idReserva se conserva por si se necesita en futuras etapas. */
+let idReserva = null;
+
+/* ============================================================
+   FAQ (Fase 5)
+   Ahora se edita desde la hoja "FAQWeb" (columnas: Pregunta, Respuesta,
+   Activo, Orden) — igual que ServiciosWeb. Este arreglo es solo un
+   respaldo local por si la hoja aún no existe o falla la conexión.
+============================================================ */
+const FAQ_LOCAL = [
+  {
+    p: "¿Las sesiones son presenciales?",
+    r: "No, todas nuestras sesiones son 100% online. Según el servicio, se realizan por audio (respuesta grabada), llamada o videollamada."
+  },
+  {
+    p: "¿Cómo se paga?",
+    r: "Por transferencia bancaria, con el 100% del valor por adelantado. Al reservar te mostramos los datos de transferencia; luego nos envías tu comprobante directo por WhatsApp para confirmar tu hora."
+  },
+  {
+    p: "¿Cuánto demora una lectura o limpieza que se entrega por audio?",
+    r: "Se entrega dentro del plazo indicado al momento de reservar (generalmente un máximo de días hábiles desde que confirmamos tu pago). Ese plazo aparece en el resumen de tu reserva antes de confirmar."
+  },
+  {
+    p: "¿Puedo reagendar o cancelar mi hora?",
+    r: "[EDITAR: definir política de reagendamiento y cancelación — por ejemplo, con cuántas horas/días de anticipación se puede reagendar, y si hay devolución en caso de cancelar.]"
+  },
+  {
+    p: "¿Qué pasa si no puedo asistir a mi hora agendada?",
+    r: "[EDITAR: definir qué ocurre si el paciente falta sin aviso — reagendamiento, pérdida del pago, etc.]"
+  },
+  {
+    p: "¿Lo que converso en la sesión es confidencial?",
+    r: "Sí. Toda la información que compartes durante tu sesión se trata con confidencialidad profesional."
+  },
+  {
+    p: "¿Atienden consultas sobre mascotas?",
+    r: "Sí, tenemos lecturas psíquicas, canalización y limpiezas energéticas especialmente para mascotas, todas en modalidad asincrónica (por audio)."
+  },
+  {
+    p: "¿Necesito estar en Chile para agendar?",
+    r: "No, puedes agendar desde cualquier país ya que todo es online. Los horarios disponibles se muestran en hora de Chile."
+  }
+];
+
+/** Trae las preguntas desde FAQWeb (Activo != NO, ordenadas por Orden) */
+async function cargarFAQ(){
+  let lista = FAQ_LOCAL;
+  if(API_BASE){
+    try{
+      const r = await fetch(API_BASE + "?hoja=FAQWeb");
+      const data = await r.json();
+      if(Array.isArray(data) && data.length > 0){
+        const filtradas = data
+          .filter(f => String(f.Activo).toUpperCase() !== "NO")
+          .filter(f => String(f.Pregunta || "").trim() !== "")
+          .sort((a,b) => (Number(a.Orden)||0) - (Number(b.Orden)||0))
+          .map(f => ({ p: String(f.Pregunta || "").trim(), r: String(f.Respuesta || "").trim() }));
+        if(filtradas.length > 0) lista = filtradas;
+      }
+    }catch(e){ /* usa respaldo local */ }
+  }
+  renderFAQ(lista);
+}
+
+function renderFAQ(lista){
+  const cont = document.getElementById("faq-lista");
+  if(!cont) return;
+  cont.innerHTML = lista.map((item, i)=>`
+    <div class="faq-item" id="faq-item-${i}">
+      <button type="button" class="faq-pregunta" aria-expanded="false" aria-controls="faq-resp-${i}">
+        <span>${item.p}</span>
+        <span class="icono" aria-hidden="true">+</span>
+      </button>
+      <div class="faq-respuesta" id="faq-resp-${i}">
+        <p>${item.r}</p>
+      </div>
+    </div>`).join("");
+  cont.querySelectorAll(".faq-pregunta").forEach(btn=>{
+    btn.addEventListener("click", ()=>{
+      const item = btn.closest(".faq-item");
+      const resp = item.querySelector(".faq-respuesta");
+      const abierto = item.classList.toggle("abierto");
+      btn.setAttribute("aria-expanded", abierto ? "true" : "false");
+      resp.style.maxHeight = abierto ? resp.scrollHeight + "px" : null;
+    });
+  });
+}
+
+/* ============ INICIO ============ */
+document.getElementById("anio").textContent = new Date().getFullYear();
+cargarServicios();
+cargarTestimonios();
+iniciarAgendador();
+cargarFAQ();
+document.getElementById("btn-testimonio").onclick = enviarTestimonio;
+</script>
+
+<!-- =================================================================
+     VIDEO DEL HERO (animación del logo) — independiente del bloque de
+     arriba, no toca servicios/testimonios/FAQ/agendador ni Code.gs.
+
+     - Carga el .mp4 SOLO en pantallas ≥680px, sin "Ahorro de datos" y
+       sin "reducir movimiento": en mobile/datos limitados se queda con
+       el PNG (hero-logo-poster.png, el último frame exacto del video),
+       para no gastarle 2.4MB de plan a nadie desde el celular.
+     - El clip no cierra el loop perfecto cuadro a cuadro. Sin editar el
+       archivo, la mejor solución práctica es un crossfade: un segundo
+       <video> (mismo archivo) arranca desde el cuadro 0 un poco ANTES
+       de que el primero llegue a su último cuadro, y se hace un fundido
+       cruzado de ~0.4s entre ambos. El ojo nunca ve el corte exacto,
+       solo una disolución suave entre "casi el final" y "el inicio".
+================================================================= -->
+<script>
+(function(){
+  var media = document.getElementById("hero-media");
+  var videoA = document.getElementById("hero-video-a");
+  var videoB = document.getElementById("hero-video-b");
+  if(!media || !videoA || !videoB) return;
+
+  var prefiereMenosMovimiento = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var conexion = navigator.connection || navigator.webkitConnection || navigator.mozConnection;
+  var ahorroDatos = !!(conexion && conexion.saveData);
+  var pantallaGrande = window.matchMedia("(min-width: 680px)").matches;
+
+  if(prefiereMenosMovimiento || ahorroDatos || !pantallaGrande){
+    return; // se queda con el PNG estático (poster) — nada de video, nada de descarga extra
+  }
+
+  var SRC = "hero-logo.mp4";
+  videoA.src = SRC;
+  videoB.src = SRC;
+  videoA.load();
+
+  videoA.addEventListener("canplay", function(){
+    videoA.play().catch(function(){ /* autoplay bloqueado: se queda el poster */ });
+    videoA.style.opacity = "1";
+  }, { once:true });
+
+  var enCrossfade = false;
+  var ultimoTiempo = 0;
+  var UMBRAL_SEG = 0.45; // arranca el fundido cuando falten ~0.45s para el final
+
+  videoA.addEventListener("timeupdate", function(){
+    var dur = videoA.duration;
+    if(!dur || isNaN(dur)) return;
+    var restante = dur - videoA.currentTime;
+
+    if(!enCrossfade && restante > 0 && restante < UMBRAL_SEG){
+      enCrossfade = true;
+      try{ videoB.currentTime = 0; }catch(e){}
+      videoB.play().catch(function(){});
+      videoB.style.opacity = "1";
+    }
+
+    // El loop nativo de videoA ya reinició la reproducción: el tiempo salta hacia atrás
+    if(videoA.currentTime < ultimoTiempo - 0.5){
+      videoB.style.opacity = "0";
+      setTimeout(function(){ videoB.pause(); }, 450);
+      enCrossfade = false;
+    }
+    ultimoTiempo = videoA.currentTime;
+  });
+})();
+</script>
+</body>
+</html>
