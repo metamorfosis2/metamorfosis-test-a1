@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Metamorfosis — Es momento del cambio</title>
+<meta name="description" content="Terapias holísticas y acompañamiento profesional: lecturas, canalización, registros akáshicos, limpiezas energéticas, reiki, ThetaHealing y más. Agenda tu hora.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Manrope:wght@400;500;600;700;800&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="favicon.png">
+<style>
+  /* ============ PALETA METAMORFOSIS — editorial luminoso (2026) ============ */
+  :root{
+    --lila-bg:#FBF6EC;        /* crema cálido, fondo principal */
+    --lila-card:#F6EFE0;      /* crema algo más profundo, para tarjetas */
+    --morado:#6B4FA0;         /* morado — botón principal y enlaces */
+    --morado-oscuro:#4A2F7E;  /* morado oscuro — títulos y fondo del footer */
+    --morado-suave:#8A6A2F;   /* oro suave — labels, kickers, acentos puntuales */
+    --verde-mariposa:#2F4F3B; /* verde profundo del detalle de la mariposa */
+    --amarillo:#D9B65C;       /* ámbar cálido */
+    --rosa:#8A6A2F;           /* alineado al oro, para líneas decorativas */
+    --texto:#4B3F52;
+    --blanco:#FFFFFF;
+    --oro-vivo:#C9A227;       /* dorado vivo — acentos puntuales (anillo del hero) */
+    --sombra:0 10px 34px rgba(42,27,61,.10);
+    --radio:10px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Manrope',sans-serif;color:var(--texto);background:var(--lila-bg);line-height:1.65}
+  img{max-width:100%}
+  a{color:var(--morado)}
+  a:hover{color:var(--morado-suave)}
+
+  /* ============ NAV ============ */
+  header{position:sticky;top:0;z-index:50;background:var(--lila-bg);border-bottom:1px solid rgba(42,27,61,.1)}
+  .nav{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;padding:.9rem 1.2rem}
+  .logo{display:flex;align-items:center;gap:.6rem;font-family:'Playfair Display',serif;font-weight:700;font-size:1.3rem;color:var(--morado-oscuro);text-decoration:none;flex-shrink:0;white-space:nowrap}
+  .logo svg{width:34px;height:34px}
+  nav ul{display:flex;gap:1.15rem;list-style:none;align-items:center}
+  nav a{text-decoration:none;font-weight:600;font-size:.86rem;color:var(--texto);white-space:nowrap}
+  nav a:hover{color:var(--morado-suave)}
+  .btn{display:inline-block;background:var(--morado);color:var(--lila-bg) !important;padding:.75rem 1.6rem;border-radius:999px;font-weight:700;text-decoration:none;border:none;cursor:pointer;font-family:inherit;font-size:.92rem;letter-spacing:.2px;transition:transform .2s,box-shadow .2s,background .2s}
+  .btn:hover{transform:translateY(-3px);background:#3F2A66;box-shadow:0 14px 30px rgba(74,47,126,.32)}
+  .btn.secundario{background:transparent;color:var(--morado) !important;border:1.5px solid rgba(42,27,61,.35);box-shadow:none}
+  .btn.secundario:hover{transform:translateY(-3px);border-color:var(--morado);background:rgba(42,27,61,.05)}
+  .menu-toggle{display:none;background:none;border:none;font-size:1.6rem;color:var(--morado);cursor:pointer}
+
+  /* ============ HERO ============ */
+  .hero{position:relative;overflow:hidden;text-align:center;padding:5.5rem 1.2rem 6rem}
+  .hero .script,.hero h1,.hero p,.hero .acciones,.hero img,.hero-media{position:relative;z-index:1}
+  /* --- Video protagonista del hero (animación del logo), recortado a círculo --- */
+  .hero-media{position:relative;width:clamp(220px,32vw,360px);aspect-ratio:1/1;margin:0 auto 1.6rem;border-radius:50%;overflow:hidden;box-shadow:0 0 0 6px rgba(201,162,39,.16),var(--sombra);background:var(--lila-bg)}
+  .hero-media img,.hero-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.2)}
+  .hero-media video{transition:opacity .45s ease}
+  .hero .script{font-family:'Dancing Script',cursive;font-weight:700;font-size:clamp(2rem,5vw,3.2rem);color:var(--morado-suave)}
+  .hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.6rem,6vw,4.2rem);color:var(--morado-oscuro);letter-spacing:-.5px;margin:.5rem 0 .9rem}
+  .hero p{max-width:560px;margin:0 auto 2rem;font-size:1.08rem}
+  .hero .acciones{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+
+  /* ============ SECCIONES ============ */
+  section{padding:4.5rem 1.2rem;position:relative;overflow:hidden}
+  .contenedor{max-width:1100px;margin:0 auto;position:relative;z-index:1}
+  .titulo-seccion{text-align:center;margin-bottom:2.5rem}
+  .titulo-seccion .script{font-family:'Dancing Script',cursive;font-weight:700;color:var(--morado-suave);font-size:1.5rem}
+  .titulo-seccion h2{font-family:'Playfair Display',serif;font-size:2.1rem;color:var(--morado-oscuro);margin-top:.5rem}
+  #servicios,#faq{background:#fff}
+
+  /* ============ HILOS DECORATIVOS (líneas punteadas de fondo) ============ */
+  .hilo{position:absolute;width:150px;height:150px;opacity:.35;z-index:0;pointer-events:none;color:rgba(42,27,61,.5)}
+  .hilo path{fill:none;stroke:currentColor;stroke-width:3;stroke-dasharray:7 9;stroke-linecap:round}
+  .hilo-servicios-1{top:10px;left:-45px;width:130px;transform:rotate(-20deg)}
+  .hilo-servicios-2{bottom:-20px;right:-40px;width:170px;color:var(--rosa);transform:rotate(155deg)}
+  .hilo-sobre-mi{top:-10px;right:6%;width:140px;color:var(--verde-mariposa);transform:rotate(35deg)}
+  .hilo-testimonios{bottom:0;left:-35px;width:160px;transform:rotate(200deg)}
+  .hilo-faq-1{top:-10px;right:-35px;width:130px;color:var(--rosa);transform:rotate(-35deg)}
+  .hilo-contacto{bottom:-15px;left:-40px;width:150px;transform:rotate(120deg)}
+  .hilo-hero-1{top:20px;left:-30px;width:160px;transform:rotate(-25deg)}
+  .hilo-hero-2{bottom:10px;right:-30px;width:180px;color:var(--rosa);transform:rotate(150deg)}
+  .hilo-agendar{top:-10px;right:-30px;width:170px;color:var(--rosa);transform:rotate(-30deg)}
+  @media(max-width:760px){.hilo{display:none}}
+
+  /* ============ FONDOS DECORATIVOS (foto/ilustración de marca) ============ */
+  .fondo-decorativo{position:absolute;inset:0;z-index:0;background-repeat:no-repeat;background-position:center;background-size:cover;opacity:.55;pointer-events:none}
+  #sobre-mi .fondo-decorativo,#agendar .fondo-decorativo{
+    background-image:url("decor/fondo-decorativo-horizontal.jpg");
+    background-image:image-set(url("decor/fondo-decorativo-horizontal.webp") type("image/webp"), url("decor/fondo-decorativo-horizontal.jpg") type("image/jpeg"));
+  }
+  @media(max-width:760px){
+    #sobre-mi .fondo-decorativo,#agendar .fondo-decorativo{
+      background-image:url("decor/fondo-decorativo-vertical.jpg");
+      background-image:image-set(url("decor/fondo-decorativo-vertical.webp") type("image/webp"), url("decor/fondo-decorativo-vertical.jpg") type("image/jpeg"));
+    }
+  }
+  /* El fondo ya trae su propio motivo de hojas/mariposa/hilos en las esquinas: se ocultan los .hilo SVG de estas 2 secciones para no duplicar el motivo */
+  #sobre-mi .hilo,#agendar .hilo{display:none}
+
+  /* ============ ACENTOS SUELTOS (mariposa, destellos, ramas) ============ */
+  .decor-mariposa,.decor-destello,.decor-ramas{position:absolute;z-index:0;pointer-events:none;display:block}
+  .decor-mariposa img,.decor-destello img,.decor-ramas img{width:100%;height:auto;display:block}
+  .decor-mariposa{width:120px;opacity:.85}
+  .decor-mariposa-testimonios{top:-6px;right:4%;transform:rotate(6deg)}
+  .decor-destello{width:32px;opacity:.9}
+  .decor-destello-servicios{top:4px;right:12%}
+  .decor-destello-faq{top:-6px;left:9%}
+  .decor-ramas{width:86px;bottom:0;opacity:.5}
+  .ramas-izq{left:1%}
+  .ramas-der{right:1%;transform:scaleX(-1)}
+  footer .decor-ramas{opacity:.7}
+  @media(max-width:760px){.decor-mariposa,.decor-destello,.decor-ramas{display:none}}
+
+  /* ============ SERVICIOS ============ */
+  .filtros{display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center;margin-bottom:2.4rem}
+  .chip{border:1.5px solid rgba(42,27,61,.28);background:transparent;color:var(--morado);padding:.45rem 1.15rem;border-radius:999px;font-weight:600;font-family:inherit;font-size:.88rem;cursor:pointer;transition:all .15s}
+  .chip:hover{background:rgba(42,27,61,.06)}
+  .chip.activo{background:var(--morado);border-color:var(--morado);color:var(--lila-bg)}
+  .grilla{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.4rem}
+  .tarjeta{background:#fff;border:1px solid rgba(42,27,61,.1);border-radius:var(--radio);padding:1.8rem;box-shadow:var(--sombra);display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s}
+  .tarjeta:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(42,27,61,.14)}
+  .tarjeta .icono{width:64px;height:64px;border-radius:8px;background:var(--lila-bg);display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem}
+  .tarjeta .icono img{width:48px;height:48px;object-fit:contain;display:block}
+  .tarjeta .categoria{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--morado-suave);margin-bottom:.45rem}
+  .tarjeta h3{font-family:'Playfair Display',serif;color:var(--morado-oscuro);font-size:1.25rem;margin-bottom:.5rem}
+  .tarjeta .desc{font-size:.94rem;flex:1}
+  .tarjeta .precio{margin-top:1.1rem;font-weight:700;color:var(--morado-oscuro);font-size:1.05rem}
+  .tarjeta .precio .desde{font-weight:500;font-size:.8rem;color:var(--morado-suave)}
+  .tarjeta .pack{margin-top:.5rem;font-size:.85rem;background:var(--lila-bg);border-radius:8px;padding:.5rem .75rem}
+  .tarjeta .agendar-btn{margin-top:1.2rem;align-self:flex-start}
+  .aviso-carga{text-align:center;font-size:.85rem;color:var(--morado-suave);margin-top:1.5rem}
+
+  /* ============ TESTIMONIOS ============ */
+  .testimonios{background:#fff}
+  .carrusel{position:relative;max-width:1020px;margin:0 auto;text-align:center}
+  .testimonios-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.2rem;align-items:stretch}
+  .testimonio{background:var(--lila-card);border-radius:var(--radio);padding:2rem;box-shadow:none;border:1px solid rgba(42,27,61,.08);display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s}
+  .testimonio:hover{transform:translateY(-4px);box-shadow:var(--sombra)}
+  .testimonio::before{content:"\201C";font-family:'Playfair Display',serif;font-style:italic;font-size:3rem;line-height:1;color:var(--morado-suave);margin-bottom:-.4rem}
+  .testimonio .texto{font-size:1.03rem;font-style:italic}
+  .testimonio .autor{margin-top:1rem;font-weight:700;color:var(--morado-oscuro)}
+  .carrusel .controles{display:flex;justify-content:center;gap:1rem;margin-top:1.2rem}
+  .carrusel button{background:var(--morado);color:var(--lila-bg);border:none;width:38px;height:38px;border-radius:50%;font-size:1.1rem;cursor:pointer}
+  .vacio{background:var(--lila-card);border:1.5px dashed rgba(42,27,61,.3);border-radius:var(--radio);padding:2.5rem;text-align:center;color:var(--morado-suave)}
+
+  /* ============ FAQ ============ */
+  .faq-lista{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:.8rem}
+  .faq-item{background:var(--lila-bg);border:1px solid rgba(42,27,61,.1);border-radius:var(--radio);box-shadow:none;overflow:hidden;transition:box-shadow .2s}
+  .faq-item:hover{box-shadow:var(--sombra)}
+  .faq-pregunta{width:100%;display:flex;align-items:center;justify-content:space-between;gap:1rem;background:none;border:none;text-align:left;font-family:'Playfair Display',serif;font-weight:700;color:var(--morado-oscuro);font-size:1.05rem;padding:1.1rem 1.4rem;cursor:pointer}
+  .faq-pregunta .icono{flex-shrink:0;width:26px;height:26px;border-radius:50%;background:#fff;color:var(--morado);display:flex;align-items:center;justify-content:center;font-size:1.1rem;transition:transform .2s}
+  .faq-item.abierto .faq-pregunta .icono{transform:rotate(45deg)}
+  .faq-respuesta{max-height:0;overflow:hidden;transition:max-height .25s ease}
+  .faq-respuesta p{padding:0 1.4rem 1.2rem;font-size:.95rem}
+  .editar{background:#F0DFA8;padding:.05rem .35rem;border-radius:4px;font-weight:700}
+
+  /* ============ AGENDAR ============ */
+  #agendar{position:relative;overflow:hidden}
+  #agendar .contenedor{position:relative;z-index:1}
+  .agenda-caja{max-width:700px;margin:0 auto;background:var(--blanco);border-radius:var(--radio);box-shadow:var(--sombra);padding:2.5rem;text-align:center}
+  .pasos{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin:2rem 0;text-align:center}
+  .paso .num{width:44px;height:44px;border-radius:50%;background:var(--verde-mariposa);color:var(--lila-bg);font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto .6rem;font-size:1.1rem}
+  .paso p{font-size:.85rem}
+  .proximamente{display:inline-block;background:var(--amarillo);color:var(--morado-oscuro);font-weight:700;padding:.3rem 1rem;border-radius:999px;font-size:.8rem;margin-bottom:1rem}
+  /* --- Formulario de reserva (Etapa 2) --- */
+  .form-grupo{text-align:left;margin-bottom:1.1rem}
+  .form-grupo label{display:block;font-weight:700;color:var(--morado-oscuro);margin-bottom:.35rem;font-size:.92rem}
+  .form-grupo select,.form-grupo input,.form-grupo textarea{width:100%;padding:.65rem .8rem;border:1.5px solid rgba(42,27,61,.25);border-radius:8px;font-family:inherit;font-size:.95rem;background:#fff;color:var(--texto)}
+  .form-grupo select:focus,.form-grupo input:focus,.form-grupo textarea:focus{outline:none;border-color:var(--morado)}
+  .form-grupo textarea{min-height:110px;resize:vertical}
+  .slots-grid{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin:1rem 0}
+  .slot-chip{border:1.5px solid rgba(42,27,61,.28);background:#fff;color:var(--morado);padding:.45rem .9rem;border-radius:999px;font-weight:700;font-family:inherit;cursor:pointer}
+  .slot-chip:hover{background:var(--lila-bg)}
+  .slot-chip.elegido{background:var(--morado);border-color:var(--morado);color:var(--lila-bg)}
+  .resumen-reserva{background:var(--lila-bg);border-radius:8px;padding:1rem 1.2rem;text-align:left;font-size:.95rem;margin:1rem 0}
+  .datos-transfer{background:var(--lila-bg);border:1.5px dashed rgba(42,27,61,.3);border-radius:8px;padding:1rem 1.2rem;text-align:left;margin:1rem 0}
+  .datos-transfer dt{font-weight:700;color:var(--morado-oscuro);font-size:.82rem;text-transform:uppercase;letter-spacing:.5px;margin-top:.5rem}
+  .datos-transfer dd{margin:0}
+  .msg-error{color:#B3261E;font-weight:600;margin-top:.8rem}
+  .consent{display:flex;gap:.5rem;align-items:flex-start;text-align:left;font-size:.85rem;margin-bottom:1.1rem}
+  .consent input{width:auto;margin-top:.25rem}
+  .oculto{display:none !important}
+  .cargando{color:var(--morado-suave);font-weight:600}
+  /* --- Calendario mensual --- */
+  .cal{background:#fff;border:1.5px solid rgba(42,27,61,.2);border-radius:12px;padding:.8rem;max-width:360px;margin:0 auto}
+  .cal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem;font-weight:700;color:var(--morado-oscuro);text-transform:capitalize}
+  .cal-head button{background:var(--lila-bg);border:none;color:var(--morado);width:32px;height:32px;border-radius:8px;font-size:1.1rem;cursor:pointer}
+  .cal-head button:disabled{opacity:.3;cursor:default}
+  .cal-dias-sem,.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+  .cal-dias-sem span{font-size:.7rem;font-weight:700;color:var(--morado-suave);text-align:center;padding-bottom:.2rem}
+  .cal-dia{aspect-ratio:1;border-radius:8px;border:none;font-family:inherit;font-weight:600;font-size:.9rem;display:flex;align-items:center;justify-content:center;background:transparent}
+  .cal-dia.disp{background:var(--lila-bg);color:var(--morado);cursor:pointer}
+  .cal-dia.disp:hover{background:var(--morado);color:var(--lila-bg)}
+  .cal-dia.sel{background:var(--morado) !important;color:var(--lila-bg) !important}
+  .cal-dia.off{color:rgba(42,27,61,.25);text-decoration:line-through}
+  /* --- Sobre mí --- */
+  .sobre-mi{display:flex;gap:2.5rem;align-items:center;flex-wrap:wrap;justify-content:center}
+  .sobre-mi .foto{width:220px;height:220px;border-radius:50%;object-fit:cover;box-shadow:var(--sombra);border:6px solid #fff}
+  .sobre-mi .bio{max-width:520px}
+  .sobre-mi .bio h3{font-family:'Playfair Display',serif;color:var(--morado-oscuro);margin-bottom:.6rem;font-size:1.4rem}
+  .sobre-mi .bio p{margin-bottom:.9rem}
+  .credenciales{list-style:none;margin:.8rem 0}
+  .credenciales li{padding:.45rem .7rem;background:#fff;border-radius:8px;margin-bottom:.45rem;box-shadow:var(--sombra);font-size:.92rem}
+  .credenciales li::before{content:"\01F98B "}
+  /* --- Botones flotantes: Instagram (arriba) y WhatsApp (abajo) --- */
+  .wsp-btn{position:fixed;bottom:22px;right:22px;z-index:60;background:#25D366;color:#fff;width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(0,0,0,.25);text-decoration:none}
+  .wsp-btn svg{width:32px;height:32px;fill:#fff}
+  .ig-btn{position:fixed;bottom:92px;right:22px;z-index:60;width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(0,0,0,.25);text-decoration:none;
+    background:radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%)}
+  .ig-btn svg{width:30px;height:30px}
+
+  /* ============ CONTACTO / FOOTER ============ */
+  .contacto .tarjetas-contacto{display:flex;gap:1.4rem;justify-content:center;flex-wrap:wrap}
+  .tarjeta-contacto{background:var(--blanco);border-radius:var(--radio);box-shadow:var(--sombra);padding:1.6rem 2rem;text-align:center;min-width:220px}
+  .tarjeta-contacto h3{font-family:'Playfair Display',serif;color:var(--morado-oscuro);margin-bottom:.4rem}
+  footer{position:relative;overflow:hidden;background:var(--morado-oscuro);color:#EDE6D8;text-align:center;padding:2.4rem 1.2rem;font-size:.85rem}
+  footer a{color:var(--oro-vivo)}
+
+  /* ============ RESPONSIVE ============ */
+  @media(max-width:1080px){
+    nav ul{display:none;position:absolute;top:100%;left:0;right:0;background:var(--lila-bg);flex-direction:column;padding:1rem;border-bottom:1px solid rgba(42,27,61,.15)}
+    nav ul.abierto{display:flex}
+    .menu-toggle{display:block}
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== NAV ==================== -->
+<header>
+  <div class="nav">
+    <a class="logo" href="#inicio" aria-label="Metamorfosis inicio">
+      <!-- Logo oficial -->
+      <img src="logo.png" alt="" style="width:46px;height:46px;border-radius:50%;filter:drop-shadow(0 2px 6px rgba(42,27,61,.25))"
+           onerror="this.style.display='none';document.getElementById('logo-fallback').style.display='block'">
+      <svg id="logo-fallback" style="display:none" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+        <path d="M32 18 C20 2 2 8 8 24 C12 36 24 38 30 32" fill="#C9A227" stroke="#4A2F7E" stroke-width="2"/>
+        <path d="M32 18 C44 2 62 8 56 24 C52 36 40 38 34 32" fill="#C9A227" stroke="#4A2F7E" stroke-width="2"/>
+        <path d="M31 16 Q32 40 32 52" stroke="#4A2F7E" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+      Metamorfosis
+    </a>
+    <nav>
+      <button class="menu-toggle" aria-label="Abrir menú" onclick="document.getElementById('menu').classList.toggle('abierto')">☰</button>
+      <ul id="menu">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#sobre-mi">Sobre mí</a></li>
+        <li><a href="#testimonios">Testimonios</a></li>
+        <li><a href="#faq">Preguntas frecuentes</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+        <li><a class="btn" href="#agendar">Agenda tu hora</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- ==================== HERO ==================== -->
+<section class="hero" id="inicio">
+  <svg class="hilo hilo-hero-1" viewBox="0 0 150 150" aria-hidden="true"><path d="M10 140 C 40 100, 10 60, 60 50 C 110 40, 90 10, 140 10"/></svg>
+  <svg class="hilo hilo-hero-2" viewBox="0 0 150 150" aria-hidden="true"><path d="M10 140 C 40 100, 10 60, 60 50 C 110 40, 90 10, 140 10"/></svg>
+  <div class="hero-media" id="hero-media">
+    <!-- Fallback estático: el último frame EXACTO del video. Se ve siempre por debajo, así que si el
+         video no carga (o el navegador no lo soporta) no hay ningún salto visual. -->
+    <img src="hero-logo-poster.png" alt="Metamorfosis — mariposa dorada" onerror="this.style.display='none'">
+    <video id="hero-video-a" muted playsinline loop preload="none" poster="hero-logo-poster.png" style="opacity:0">
+      Tu navegador no soporta reproducción de video HTML5.
+    </video>
+    <!-- Video B: solo se usa unos milisegundos, para disimular con un crossfade el corte del loop (ver script abajo) -->
+    <video id="hero-video-b" muted playsinline preload="none" style="opacity:0;pointer-events:none"></video>
+  </div>
+  <div class="script">Es momento del cambio</div>
+  <h1>Metamorfosis</h1>
+  <p>La respuesta está frente a ti… Terapias holísticas y acompañamiento profesional, <strong>100% online</strong>, para tu bienestar emocional, energético y el de quienes amas — incluidas tus mascotas.</p>
+  <div class="acciones">
+    <a class="btn" href="#agendar">Agenda tu hora</a>
+    <a class="btn secundario" href="#servicios">Ver servicios</a>
+  </div>
+</section>
+
+<!-- ==================== SERVICIOS ==================== -->
+<section id="servicios">
+  <svg class="hilo hilo-servicios-1" viewBox="0 0 150 150" aria-hidden="true"><path d="M10 140 C 40 100, 10 60, 60 50 C 110 40, 90 10, 140 10"/></svg>
+  <svg class="hilo hilo-servicios-1" viewBox="0 0 150 150" aria-hidden="true" style="position:absolute;top:10px;right:-45px;left:auto;width:130px;transform:scaleX(-1) rotate(-20deg)"><path d="M10 140 C 40 100, 10 60, 60 50 C 110 40, 90 10, 140 10"/></svg>
+  <picture class="decor-destello decor-destello-servicios" aria-hidden="true">
+    <source srcset="decor/destello-1.webp" type="image/webp">
+  </picture>
+  <svg class="hilo hilo-servicios-2" viewBox="0 0 150 150" aria-hidden="true"><path d="M10 140 C 40 100, 10 60, 60 50 C 110 40, 90 10, 140 10"/></svg>
+  <div class="contenedor">
+    <div class="titulo-seccion">
+      <div class="script" style="font-size:70px">Catálogo</div>
+    </div>
+    <div class="filtros" id="filtros" role="tablist" aria-label="Filtrar servicios por categoría"></div>
+    <div class="grilla" id="grilla-servicios"></div>
+    <p class="aviso-carga" id="aviso-carga"></p>
+  </div>
+</section>
+
+<!-- ==================== SOBRE MÍ ==================== -->
+<section id="sobre-mi">
+  <div class="fondo-decorativo" aria-hidden="true"></div>
+  <svg class="hilo hilo-sobre-mi" viewBox="0 0 150 150" aria-hidden="true"><path d="M10 140 C 40 100, 10 60, 60 50 C 110 40, 90 10, 140 10"/></svg>
+  <div class="contenedor">
+    <div class="titulo-seccion">
+      <div class="script">Quien te acompaña</div>
+      <h2>Sobre mí</h2>
+    </div>
+    <div class="sobre-mi">
+      <!-- Guarda tu foto como foto-terapeuta.jpg junto a este archivo; si no existe, se muestra el logo -->
+      <img class="foto" src="foto-terapeuta.jpg" alt="Terapeuta de Metamorfosis" onerror="this.src='logo.png'">
+      <div class="bio">
+        <h3>[EDITAR: Tu nombre]</h3>
+        <p>[EDITAR — Tu historia: qué te llevó a este camino, tu propia metamorfosis y cómo acompañas hoy a otras personas. 3 a 5 líneas en primera persona.]</p>
+        <p><strong>Formación y certificaciones:</strong></p>
+        <ul class="credenciales">
+          <li>[EDITAR: ej. Psicóloga, Universidad …]</li>
+          <li>[EDITAR: ej. Practitioner certificada en ThetaHealing®]</li>
+          <li>[EDITAR: ej. Maestría en Reiki Usui nivel …]</li>
+          <li>[EDITAR: ej. Lectura de Registros Akáshicos, certificada por …]</li>
+        </ul>
+        <p style="font-size:.9rem;color:var(--morado-suave)">Sesiones 100% online, en un espacio seguro, sin juicios y a tu ritmo &#x1F98B;</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== TESTIMONIOS ==================== -->
+<section class="testimonios" id="testimonios">
+  <svg class="hilo hilo-testimonios" viewBox="0 0 150 150" aria-hidden="true"><path d="M10 140 C 40 100, 10 60, 60 50 C 110 40, 90 10, 140 10"/></svg>
+  <picture class="decor-mariposa decor-mariposa-testimonios" aria-hidden="true">
+    <source srcset="decor/decor-mariposa-grande.webp" type="image/webp">
+    <img src="decor/decor-mariposa-grande.png" alt="" width="120" height="120" loading="lazy">
+  </picture>
+  <div class="contenedor">
+    <div class="titulo-seccion">
+      <div class="script">Experiencias reales</div>
+      <h2>Testimonios</h2>
+    </div>
+    <div class="carrusel" id="carrusel-testimonios"></div>
+
+    <!-- Formulario post-sesión (Etapa 4): se publica solo tras tu aprobación -->
+    <div class="agenda-caja" style="margin-top:2.5rem;max-width:600px">
+      <h3 style="color:var(--morado-oscuro);margin-bottom:.4rem">Comparte tu experiencia</h3>
+      <p style="font-size:.9rem;margin-bottom:1rem">¿Viviste tu metamorfosis? Tu testimonio puede acompañar a otra persona a dar el paso &#x1F98B;</p>
+      <form id="form-testimonio" onsubmit="return false;">
+        <div class="form-grupo">
+          <label for="in-t-nombre">Tu nombre (como quieres que aparezca)</label>
+          <input type="text" id="in-t-nombre" maxlength="80">
+        </div>
+        <div class="form-grupo">
+          <label for="in-t-texto">Tu experiencia</label>
+          <textarea id="in-t-texto" maxlength="600" placeholder="Cuéntanos cómo fue tu experiencia…"></textarea>
+        </div>
+        <button class="btn" id="btn-testimonio" type="button">Enviar testimonio</button>
+        <p id="msg-testimonio" style="margin-top:.8rem;font-weight:600"></p>
+        <p style="font-size:.78rem;color:var(--morado-suave);margin-top:.6rem">Tu testimonio se publicará una vez revisado. Al enviarlo autorizas su publicación en este sitio con el nombre indicado.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== AGENDAR ==================== -->
+<section id="agendar">
+  <div class="fondo-decorativo" aria-hidden="true"></div>
+  <svg class="hilo hilo-agendar" viewBox="0 0 150 150" aria-hidden="true"><path d="M10 140 C 40 100, 10 60, 60 50 C 110 40, 90 10, 140 10"/></svg>
+  <div class="contenedor">
+    <div class="titulo-seccion">
+      <div class="script">Reserva con transferencia</div>
+      <h2>Agenda tu hora</h2>
+    </div>
+    <div class="agenda-caja">
+      <div class="pasos">
+        <div class="paso"><div class="num">1</div><p>Elige tu servicio</p></div>
+        <div class="paso"><div class="num">2</div><p>Fecha y hora disponible</p></div>
+        <div class="paso"><div class="num">3</div><p>Transfiere el total</p></div>
+        <div class="paso"><div class="num">4</div><p>Recibe la confirmación</p></div>
+      </div>
+
+      <!-- Paso 1-2: servicio y fecha -->
+      <form id="form-reserva" onsubmit="return false;">
+        <div class="form-grupo">
+          <label for="sel-servicio">Servicio</label>
+          <select id="sel-servicio" required></select>
+        </div>
+        <!-- Opciones/combos del servicio (duración, combos con otros servicios) -->
+        <div class="form-grupo oculto" id="grupo-variante">
+          <label>Elige una opción</label>
+          <div class="slots-grid" id="variantes" style="justify-content:center"></div>
+        </div>
+        <!-- Canal de la sesión (solo si el servicio ofrece opciones) -->
+        <div class="form-grupo oculto" id="grupo-canal">
+          <label>¿Cómo prefieres tu sesión?</label>
+          <div class="slots-grid" id="canales" style="justify-content:center"></div>
+        </div>
+        <!-- Solo para servicios con hora agendada -->
+        <div id="bloque-agendada">
+          <div class="form-grupo">
+            <label>Elige un día — los días tachados no tienen horas disponibles</label>
+            <div class="cal" id="calendario">
+              <div class="cal-head">
+                <button type="button" id="cal-prev" aria-label="Mes anterior">‹</button>
+                <span id="cal-mes">Elige un servicio…</span>
+                <button type="button" id="cal-next" aria-label="Mes siguiente">›</button>
+              </div>
+              <div class="cal-dias-sem"><span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span></div>
+              <div class="cal-grid" id="cal-grid"></div>
+            </div>
+          </div>
+          <p id="estado-slots" class="cargando" style="margin-top:.8rem"></p>
+          <div class="slots-grid" id="slots"></div>
+        </div>
+        <!-- Solo para servicios asincrónicos (entrega por audio) -->
+        <p id="info-asinc" class="oculto" style="background:var(--lila-bg);border-radius:12px;padding:1rem 1.2rem;text-align:left"></p>
+
+        <!-- Paso 3: datos del cliente (aparece al elegir hora) -->
+        <div id="bloque-datos" class="oculto">
+          <div class="resumen-reserva" id="resumen"></div>
+          <div class="form-grupo oculto" id="grupo-integrantes">
+            <label for="in-integrantes-extra">Integrantes extra (la base incluye 3 integrantes/mascotas) — $8.000 c/u</label>
+            <input type="number" id="in-integrantes-extra" min="0" step="1" value="0">
+          </div>
+          <div class="form-grupo"><label for="in-nombre">Nombre completo</label><input type="text" id="in-nombre" required></div>
+          <div class="form-grupo"><label for="in-telefono">Teléfono (WhatsApp)</label><input type="tel" id="in-telefono" value="+56 9 " placeholder="+56 9 1234 5678" required></div>
+          <div class="form-grupo"><label for="in-correo">Correo</label><input type="email" id="in-correo" required></div>
+          <div class="consent">
+            <input type="checkbox" id="chk-consent" required>
+            <label for="chk-consent">Autorizo el tratamiento de mis datos personales para gestionar esta reserva, conforme a la Ley 21.719.</label>
+          </div>
+          <button class="btn" id="btn-reservar" type="button">Reservar mi hora</button>
+        </div>
+        <p class="msg-error oculto" id="msg-error"></p>
+      </form>
+
+      <!-- Paso 4: confirmación con datos de transferencia -->
+      <div id="bloque-exito" class="oculto">
+        <h3 style="color:var(--morado-oscuro);margin-bottom:.6rem">&#x1F98B; ¡Tu hora quedó reservada!</h3>
+        <p>Para confirmarla, transfiere el total dentro de las próximas 24 horas:</p>
+        <dl class="datos-transfer" id="datos-transfer"></dl>
+        <p id="exito-detalle"></p>
+        <p style="margin-top:1rem"><strong>Último paso:</strong> envíanos tu comprobante por WhatsApp — así quedamos en contacto directo contigo:</p>
+        <a class="btn" id="btn-wsp-comp" target="_blank" rel="noopener" style="margin-top:.4rem">📲 Enviar comprobante por WhatsApp</a>
+        <p style="font-size:.85rem;margin-top:.8rem">¿Problemas con el botón? Escríbenos directo al
+          <a href="https://wa.me/56930683273" target="_blank" rel="noopener">+56 9 3068 3273</a>.</p>
+        <p style="margin-top:1.2rem"><button class="btn secundario" type="button" id="btn-nueva-reserva">Agendar otro servicio</button></p>
+      </div>
+
+      <!-- Respaldo si la API aún no está conectada -->
+      <div id="bloque-sin-api" class="oculto">
+        <span class="proximamente">Próximamente en línea</span>
+        <p>Mientras habilitamos la agenda online, reserva directamente por WhatsApp:</p>
+        <a class="btn" href="https://wa.me/56930683273" target="_blank" rel="noopener">📲 Escríbenos por WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FAQ ==================== -->
+<section id="faq">
+  <svg class="hilo hilo-faq-1" viewBox="0 0 150 150" aria-hidden="true"><path d="M10 140 C 40 100, 10 60, 60 50 C 110 40, 90 10, 140 10"/></svg>
+  <picture class="decor-destello decor-destello-faq" aria-hidden="true">
+    <source srcset="decor/destello-3.webp" type="image/webp">
+    <img src="decor/destello-3.png" alt="" width="32" height="32" loading="lazy">
+  </picture>
+  <div class="contenedor">
+    <div class="titulo-seccion">
+      <div class="script">Antes de agendar</div>
+      <h2>Preguntas frecuentes</h2>
+    </div>
+    <div class="faq-lista" id="faq-lista"></div>
+  </div>
+</section>
+
+<!-- ==================== CONTACTO ==================== -->
+<section class="contacto" id="contacto">
+  <svg class="hilo hilo-contacto" viewBox="0 0 150 150" aria-hidden="true"><path d="M10 140 C 40 100, 10 60, 60 50 C 110 40, 90 10, 140 10"/></svg>
+  <div class="contenedor">
+    <div class="titulo-seccion">
+      <div class="script">Conversemos</div>
+      <h2>Contacto</h2>
+    </div>
+    <div class="tarjetas-contacto">
+      <div class="tarjeta-contacto">
+        <h3>Instagram</h3>
+        <p><a href="https://www.instagram.com/meta.morfosis2/" target="_blank" rel="noopener">@meta.morfosis2</a></p>
+      </div>
+      <div class="tarjeta-contacto">
+        <h3>WhatsApp</h3>
+        <p id="whatsapp-slot">Próximamente</p>
+      </div>
+      <div class="tarjeta-contacto">
+        <h3>Modalidad</h3>
+        <p>Sesiones 100% online, desde donde estés 🌎</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <picture class="decor-ramas ramas-izq" aria-hidden="true">
+    <source srcset="decor/decor-ramas-1.webp" type="image/webp">
+    <img src="decor/decor-ramas-1.png" alt="" width="86" height="86" loading="lazy">
+  </picture>
+  <picture class="decor-ramas ramas-der" aria-hidden="true">
+    <source srcset="decor/decor-ramas-1.webp" type="image/webp">
+    <img src="decor/decor-ramas-1.png" alt="" width="86" height="86" loading="lazy">
+  </picture>
+  <img src="logo.png" alt="" style="width:56px;border-radius:50%;margin-bottom:.6rem" onerror="this.style.display='none'">
+  <p>© <span id="anio"></span> Metamorfosis · Es momento del cambio &#x1F98B;</p>
+  <p style="margin-top:.4rem">Tus datos personales se tratan conforme a la Ley 21.719. <a href="#" id="link-privacidad">Aviso de privacidad</a> (próximamente).</p>
+</footer>
+
+<!-- Botón flotante Instagram (arriba del de WhatsApp) -->
+<a class="ig-btn" href="https://www.instagram.com/meta.morfosis2/" target="_blank" rel="noopener" aria-label="Síguenos en Instagram">
+  <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2" y="2" width="20" height="20" rx="6"/>
+    <circle cx="12" cy="12" r="4.2"/>
+    <circle cx="17.4" cy="6.6" r="1.1" fill="#fff" stroke="none"/>
+  </svg>
+</a>
+
+<script>
+/* =================================================================
+   CONFIGURACIÓN
+   Cuando la hoja "Servicios" y el Apps Script estén desplegados,
+   pega aquí la URL de la Web App (termina en /exec).
+   Mientras esté vacía, el sitio usa el catálogo local de respaldo.
+================================================================= */
+const CONFIG = {
+  SERVICIOS_URL: "https://script.google.com/macros/s/AKfycbw04vZioYwndsr1RukrWn0wwlWZOpRN7ji0eUMojAWfuUSUy1cQmk3vzLSgOA5vec01/exec",     // ej: "https://script.google.com/macros/s/XXXX/exec?hoja=Servicios"
+  TESTIMONIOS_URL: "",   // se conecta en la Etapa 4
+  WHATSAPP: "+56930683273"  // botón flotante de WhatsApp
+};
+
+/* ============ CATÁLOGO LOCAL DE RESPALDO (catálogo 2025-2026) ============ */
+const SERVICIOS_LOCAL = [
+  {categoria:"Psicología", nombre:"Sesiones psicológicas", descripcion:"Apoyo consciente y especializado, con enfoque neuroafirmativo y calidad de vida.", precioTexto:"$35.000", packs:"Pack 4 sesiones $135.000 · Pack 5 sesiones $165.000"},
+  {categoria:"Psicología", nombre:"Evaluación integral", descripcion:"Trabajo mixto: entrevistas clínicas y escalas, en modalidad 100% online.", precioTexto:"Consultar", packs:""},
+  {categoria:"Lecturas", nombre:"Lectura de tarot", descripcion:"Sesión terapéutica con guía de tarot de ángeles.", precioTexto:"30 min $13.000 · 1 hora $21.000", packs:""},
+  {categoria:"Lecturas", nombre:"Lectura psíquica general", descripcion:"Conexión profunda para comprender energía y emociones. Asincrónica.", precioTexto:"$17.000", packs:"Combo con 1 hora de tarot (audio, llamada o videollamada) $35.000"},
+  {categoria:"Lecturas", nombre:"Lectura psíquica específica", descripcion:"Respuestas específicas a preguntas puntuales (1 a 3 preguntas).", precioTexto:"$14.000", packs:""},
+  {categoria:"Mascotas", nombre:"Lectura psíquica para mascotas", descripcion:"Lectura empática del estado emocional de tu mascota. Asincrónica.", precioTexto:"$25.000", packs:"Combo con limpieza energética de mascota $30.000"},
+  {categoria:"Canalización", nombre:"Canalización seres queridos", descripcion:"Mensajes y guías de seres queridos. 60 min.", precioTexto:"$42.000", packs:"Combo con Registros Akáshicos (90 min) $75.000"},
+  {categoria:"Mascotas", nombre:"Canalización de mascotas", descripcion:"Canalización psíquica con mensajes intuitivos para su bienestar.", precioTexto:"$25.000", packs:""},
+  {categoria:"Registros Akáshicos", nombre:"Lectura de Registros Akáshicos", descripcion:"Accedamos a la sabiduría de tu alma. 60 min.", precioTexto:"$42.000", packs:"Combo con tarot (90 min) $55.000"},
+  {categoria:"Registros Akáshicos", nombre:"Iniciación de Registros Akáshicos", descripcion:"Aprende a conectar con los registros y realizar lecturas intuitivas para ti y otros.", precioTexto:"$88.000", packs:"Grupo de 3 a 6 personas: $75.000 c/u"},
+  {categoria:"Limpiezas energéticas", nombre:"Limpieza de campo áurico", descripcion:"Alivio de cargas y protección espiritual.", precioTexto:"$11.000", packs:"2 limpiezas $20.000"},
+  {categoria:"Limpiezas energéticas", nombre:"Limpieza energética completa", descripcion:"Disuelve energías densas y bloqueos de chakras; restaura tu equilibrio y eleva tu frecuencia. 60 min.", precioTexto:"$28.000", packs:"Combo con lectura psíquica general (60 min) $40.000"},
+  {categoria:"Mascotas", nombre:"Limpieza energética para mascotas", descripcion:"Visualizar y remover energías densas y bloqueos. Puede incluir inserción de sentimientos y/o sanación. Asincrónica.", precioTexto:"$22.000", packs:"Combo mascota + tutor $40.000"},
+  {categoria:"Limpiezas energéticas", nombre:"Limpieza energética de casa", descripcion:"Limpieza completa del hogar con lectura del campo de energía del lugar, más armonización de 3 integrantes y mascotas.", precioTexto:"$70.000", packs:"Integrante adicional +$8.000"},
+  {categoria:"Constelaciones", nombre:"Constelaciones familiares", descripcion:"Sana vínculos y libera patrones heredados.", precioTexto:"$42.000", packs:""},
+  {categoria:"Reiki", nombre:"Terapia de reiki a distancia", descripcion:"Busca la armonización. Incluye audio de retroalimentación. Se aconsejan 3 sesiones cada 15 días.", precioTexto:"$29.000", packs:"Pack de 3 sesiones $75.000"},
+  {categoria:"ThetaHealing", nombre:"Sesión de ThetaHealing", descripcion:"Terapia intuitiva a través de meditación profunda, enfocada en la liberación emocional desde lo corporal y energético.", precioTexto:"$42.000", packs:""},
+  {categoria:"ThetaHealing", nombre:"Cierre de vínculos amorosos", descripcion:"Terapia intuitiva para cortar lazos y dependencias emocionales con vínculos actuales y del pasado. 90 min.", precioTexto:"$42.000", packs:"Combo + limpieza energética completa (90 min) $60.000"},
+  {categoria:"ThetaHealing", nombre:"Apertura de caminos", descripcion:"Activa oportunidades y propósito.", precioTexto:"$52.000", packs:""}
+];
+
+/* ============ OPCIONES/COMBOS POR SERVICIO ============
+   Estas reglas mandan por sobre lo que diga la hoja para el cálculo del
+   monto y la duración a agendar (el texto de la tarjeta sí sale de la hoja).
+   "modalidad" y "canales" en una variante pisan los de la hoja para ESA opción. */
+const OPCIONES_SERVICIO = {
+  "Lectura de tarot": {
+    variantes: [
+      { label:"30 min", precio:13000, duracion:30, modalidad:"AGENDADA" },
+      { label:"1 hora", precio:21000, duracion:60, modalidad:"AGENDADA" }
+    ]
+  },
+  "Lectura psíquica general": {
+    variantes: [
+      { label:"Solo lectura (asincrónica)", precio:17000, modalidad:"ASINCRONICA", canales:["AUDIO"] },
+      { label:"Con tarot — 1 hora", precio:35000, duracion:60, modalidad:"AGENDADA", canales:["AUDIO","LLAMADA","VIDEOLLAMADA"] }
+    ]
+  },
+  "Lectura psíquica para mascotas": {
+    variantes: [
+      { label:"Solo lectura", precio:25000, modalidad:"ASINCRONICA", canales:["AUDIO"] },
+      { label:"Combo + limpieza energética de mascota", precio:30000, modalidad:"ASINCRONICA", canales:["AUDIO"] }
+    ]
+  },
+  "Canalización seres queridos": {
+    variantes: [
+      { label:"Canalización — 60 min", precio:42000, duracion:60, modalidad:"AGENDADA" },
+      { label:"Combo + Registros Akáshicos — 90 min", precio:75000, duracion:90, modalidad:"AGENDADA" }
+    ]
+  },
+  "Lectura de Registros Akáshicos": {
+    variantes: [
+      { label:"Registros Akáshicos — 60 min", precio:42000, duracion:60, modalidad:"AGENDADA" },
+      { label:"Combo + Tarot — 90 min", precio:55000, duracion:90, modalidad:"AGENDADA" }
+    ]
+  },
+  "Limpieza de campo áurico": {
+    variantes: [
+      { label:"1 limpieza", precio:11000, modalidad:"AGENDADA" },
+      { label:"2 limpiezas", precio:20000, modalidad:"AGENDADA" }
+    ]
+  },
+  "Limpieza energética completa": {
+    variantes: [
+      { label:"Limpieza completa — 60 min", precio:28000, duracion:60, modalidad:"AGENDADA" },
+      { label:"Combo + Lectura psíquica general — 60 min", precio:40000, duracion:60, modalidad:"AGENDADA" }
+    ]
+  },
+  "Limpieza energética para mascotas": {
+    variantes: [
+      { label:"Solo mascota", precio:22000, modalidad:"ASINCRONICA", canales:["AUDIO"] },
+      { label:"Combo mascota + tutor", precio:40000, modalidad:"ASINCRONICA", canales:["AUDIO"] }
+    ]
+  },
+  "Cierre de vínculos amorosos": {
+    variantes: [
+      { label:"Cierre de vínculos — 90 min", precio:42000, duracion:90, modalidad:"AGENDADA" },
+      { label:"Combo + Limpieza energética completa — 90 min", precio:60000, duracion:90, modalidad:"AGENDADA" }
+    ]
+  },
+  "Limpieza energética de casa": {
+    extraIntegrante: { precio:8000, incluidos:3 }
+  }
+};
+
+/* ============ FORMATO DE PRECIOS ============
+   Si la celda de la hoja es un número (ej: 17000), lo muestra como $17.000.
+   Si es texto (ej: "40 min $16.000 · 1 hora $21.000" o "Consultar"), lo deja tal cual.
+   Así la hoja guarda NÚMEROS limpios, listos para cobrar el 100% del servicio. */
+function formatearPrecio(valor){
+  if(valor === null || valor === undefined || valor === "") return "Consultar";
+  if(typeof valor === "number" || (/^\d+$/.test(String(valor).trim()))){
+    return "$" + Number(valor).toLocaleString("es-CL");
+  }
+  return String(valor);
+}
+
+/* ============ RENDER DE SERVICIOS ============ */
+let servicios = [];
+let categoriaActiva = "Todos";
+
+function renderFiltros(){
+  const cats = ["Todos", ...new Set(servicios.map(s=>s.categoria))];
+  const cont = document.getElementById("filtros");
+  cont.innerHTML = "";
+  cats.forEach(cat=>{
+    const b = document.createElement("button");
+    b.className = "chip" + (cat===categoriaActiva ? " activo" : "");
+    b.textContent = cat;
+    b.onclick = ()=>{ categoriaActiva = cat; renderFiltros(); renderServicios(); };
+    cont.appendChild(b);
+  });
+}
+
+/** Servicios sin precio fijo ("Consultar"): se coordinan directo por WhatsApp, sin agendar */
+function esConsultar(s){ return s.precioTexto === "Consultar"; }
+
+/** Mensaje genérico de WhatsApp: por regla del negocio, NUNCA menciona el tipo de servicio */
+function enlaceConsultaWsp(){
+  const texto = encodeURIComponent("Hola! Quisiera consultar por uno de sus servicios \u{1F98B}");
+  return "https://wa.me/" + CONFIG.WHATSAPP.replace(/\D/g,"") + "?text=" + texto;
+}
+
+/** Ícono ilustrado por categoría (badge de la tarjeta): nombre base del archivo en /icons */
+const ICONOS_CATEGORIA = {
+  "Psicología": "icono-psicologia",
+  "Lecturas": "icono-lecturas-tarot",
+  "Mascotas": "icono-mascotas",
+  "Canalización": "icono-canalizacion",
+  "Registros Akáshicos": "icono-registros-akashicos",
+  "Limpiezas energéticas": "icono-limpiezas-energeticas",
+  "Constelaciones": "icono-constelaciones",
+  "Reiki": "icono-reiki",
+  "ThetaHealing": "icono-thetahealing"
+};
+function iconoDeCategoria(categoria){ return ICONOS_CATEGORIA[categoria] || "icono-limpiezas-energeticas"; }
+
+/** Excepciones puntuales por NOMBRE de servicio: pisan el ícono genérico de su categoría */
+const ICONO_EXCEPCION_SERVICIO = {
+  "Limpieza energética de casa": "icono-limpieza-casa"
+};
+
+/** Ícono efectivo de un servicio (excepción por nombre, si existe, si no el de su categoría) */
+function iconoDeServicio(s){ return ICONO_EXCEPCION_SERVICIO[s.nombre] || iconoDeCategoria(s.categoria); }
+
+/** Marcado <picture> del badge: .webp liviano con fallback .png (ambos ya redimensionados a 160px) */
+function iconoHtml(s){
+  const base = iconoDeServicio(s);
+  return `<picture><source srcset="icons/${base}.webp" type="image/webp"><img src="icons/${base}.png" alt="" width="48" height="48" loading="lazy"></picture>`;
+}
+
+function renderServicios(){
+  const grilla = document.getElementById("grilla-servicios");
+  grilla.innerHTML = "";
+  servicios
+    .filter(s=>categoriaActiva==="Todos" || s.categoria===categoriaActiva)
+    .forEach(s=>{
+      const t = document.createElement("div");
+      t.className = "tarjeta";
+      const consultar = esConsultar(s);
+      t.innerHTML = `
+        <div class="icono">${iconoHtml(s)}</div>
+        <div class="categoria">${s.categoria}</div>
+        <h3>${s.nombre}</h3>
+        <p class="desc">${s.descripcion}</p>
+        <div class="precio"><span class="desde">Inversión: </span>${s.precioTexto}</div>
+        ${s.packs ? `<div class="pack">✨ ${s.packs}</div>` : ""}
+        ${consultar
+          ? `<a class="btn secundario agendar-btn" href="${enlaceConsultaWsp()}" target="_blank" rel="noopener">💬 Consultar por WhatsApp</a>`
+          : `<a class="btn secundario agendar-btn" href="#agendar">Agendar</a>`}`;
+      if(!consultar){
+        // El botón preselecciona este servicio en el agendador
+        t.querySelector(".agendar-btn").addEventListener("click", ()=>{
+          const idx = servicios.indexOf(s);
+          const sel = document.getElementById("sel-servicio");
+          if(sel && idx >= 0){ sel.value = String(idx); alCambiarServicio(); }
+        });
+      }
+      grilla.appendChild(t);
+    });
+}
+
+async function cargarServicios(){
+  const aviso = document.getElementById("aviso-carga");
+  if(CONFIG.SERVICIOS_URL){
+    try{
+      const r = await fetch(CONFIG.SERVICIOS_URL);
+      const data = await r.json();
+      // La hoja "Servicios" entrega: Categoria, Servicio, Descripcion, PrecioTexto, Packs, Activo, Orden
+      servicios = data
+        .filter(f=>String(f.Activo).toUpperCase()!=="NO")
+        .filter(f=>String(f.Servicio||"").trim() !== "") // descarta filas vacías/sobrantes de la hoja
+        .sort((a,b)=>(a.Orden||0)-(b.Orden||0))
+        .map(f=>({
+          categoria:f.Categoria, nombre:f.Servicio, descripcion:f.Descripcion,
+          precioTexto:formatearPrecio(f.PrecioTexto), packs:f.Packs||"",
+          // Datos para el agendador (Etapa 2):
+          precioNum:(typeof f.PrecioTexto==="number") ? f.PrecioTexto : (/^\d+$/.test(String(f.PrecioTexto).trim()) ? Number(f.PrecioTexto) : null),
+          duracion:Number(f.DuracionMin)||60,
+          modalidad:String(f.Modalidad||"").trim().toUpperCase()==="ASINCRONICA" ? "ASINCRONICA" : "AGENDADA",
+          plazoDias:Number(f.PlazoDiasHabiles)||3,
+          canales:String(f.Canales||"").split(",").map(x=>x.trim().toUpperCase()).filter(Boolean)
+        }));
+      aviso.textContent = "";
+    }catch(e){
+      servicios = SERVICIOS_LOCAL;
+      aviso.textContent = "Mostrando catálogo de referencia.";
+    }
+  }else{
+    servicios = SERVICIOS_LOCAL;
+  }
+  renderFiltros();
+  renderServicios();
+  poblarSelectServicios();
+}
+
+/* ============ TESTIMONIOS (Etapa 4: conectados a TestimoniosWeb) ============ */
+const TESTIMONIOS_LOCAL = []; // respaldo si la API no responde
+
+/** Trae los testimonios APROBADOS desde la hoja y los muestra */
+async function cargarTestimonios(){
+  let lista = TESTIMONIOS_LOCAL;
+  if(API_BASE){
+    try{
+      const r = await fetch(API_BASE + "?hoja=TestimoniosWeb");
+      const data = await r.json();
+      if(Array.isArray(data) && data.length > 0){
+        lista = data.map(t=>({texto:t.Texto, autor:t.Nombre}));
+      }
+    }catch(e){ /* usa respaldo */ }
+  }
+  renderTestimonios(lista);
+}
+
+const TESTIMONIOS_POR_PAGINA = 3;
+
+function renderTestimonios(lista){
+  const cont = document.getElementById("carrusel-testimonios");
+  if(!lista || lista.length===0){
+    cont.innerHTML = `<div class="vacio">\u{1F98B} Muy pronto compartiremos aquí las experiencias de quienes ya vivieron su metamorfosis.</div>`;
+    return;
+  }
+  let pagina = 0;
+  const totalPaginas = Math.ceil(lista.length / TESTIMONIOS_POR_PAGINA);
+  const pinta = ()=>{
+    const inicio = pagina * TESTIMONIOS_POR_PAGINA;
+    const visibles = lista.slice(inicio, inicio + TESTIMONIOS_POR_PAGINA);
+    cont.innerHTML = `
+      <div class="testimonios-grid">
+        ${visibles.map(t=>`
+          <div class="testimonio">
+            <p class="texto">"${t.texto}"</p>
+            <p class="autor">— ${t.autor}</p>
+          </div>`).join("")}
+      </div>` +
+      (totalPaginas > 1 ? `
+      <div class="controles">
+        <button aria-label="Anteriores" id="prev">‹</button>
+        <button aria-label="Siguientes" id="next">›</button>
+      </div>` : "");
+    if(totalPaginas > 1){
+      document.getElementById("prev").onclick = ()=>{ pagina=(pagina-1+totalPaginas)%totalPaginas; pinta(); };
+      document.getElementById("next").onclick = ()=>{ pagina=(pagina+1)%totalPaginas; pinta(); };
+    }
+  };
+  pinta();
+}
+
+/** Envía un testimonio nuevo (queda pendiente de aprobación) */
+async function enviarTestimonio(){
+  const msg = document.getElementById("msg-testimonio");
+  const nombre = document.getElementById("in-t-nombre").value.trim();
+  const texto = document.getElementById("in-t-texto").value.trim();
+  msg.style.color = "#B3261E";
+  if(!nombre || !texto){ msg.textContent = "Escribe tu nombre y tu experiencia."; return; }
+  if(!API_BASE){ msg.textContent = "El envío no está disponible por ahora. Escríbenos por WhatsApp \u{1F98B}"; return; }
+  const btn = document.getElementById("btn-testimonio");
+  btn.disabled = true; btn.textContent = "Enviando…";
+  try{
+    const r = await fetch(API_BASE, {
+      method:"POST",
+      body: JSON.stringify({ accion:"testimonio", nombre:nombre, texto:texto })
+    });
+    const res = await r.json();
+    if(!res.ok) throw new Error(res.error || "No se pudo enviar.");
+    msg.style.color = "var(--morado)";
+    msg.textContent = "\u{1F98B} ¡Gracias! Tu testimonio se publicará una vez revisado.";
+    document.getElementById("in-t-nombre").value = "";
+    document.getElementById("in-t-texto").value = "";
+    btn.textContent = "Enviado ✓";
+  }catch(e){
+    msg.textContent = (e.message || "No pudimos enviar tu testimonio.") + " Intenta de nuevo.";
+    btn.disabled = false; btn.textContent = "Enviar testimonio";
+  }
+}
+
+/* ============================================================
+   AGENDADOR (Etapa 2)
+   Usa la misma Web App: ?accion=slots (horas libres desde Calendar),
+   ?accion=config (datos de transferencia) y POST (crear reserva).
+============================================================ */
+const API_BASE = CONFIG.SERVICIOS_URL ? CONFIG.SERVICIOS_URL.split("?")[0] : "";
+let configWeb = null;
+let slotElegido = null;
+
+function iniciarAgendador(){
+  if(!API_BASE){
+    document.getElementById("form-reserva").classList.add("oculto");
+    document.getElementById("bloque-sin-api").classList.remove("oculto");
+    return;
+  }
+  document.getElementById("btn-reservar").onclick = enviarReserva;
+  document.getElementById("sel-servicio").onchange = alCambiarServicio;
+  document.getElementById("cal-prev").onclick = ()=>cambiarMes(-1);
+  document.getElementById("cal-next").onclick = ()=>cambiarMes(1);
+  document.getElementById("in-integrantes-extra").oninput = (e)=>{
+    integrantesExtra = Math.max(0, parseInt(e.target.value, 10) || 0);
+    renderResumen();
+  };
+  document.getElementById("btn-nueva-reserva").onclick = reiniciarFormularioReserva;
+  // Botón flotante de WhatsApp (se activa al poner el número en CONFIG)
+  if(CONFIG.WHATSAPP){
+    const a = document.createElement("a");
+    a.className = "wsp-btn"; a.target = "_blank"; a.rel = "noopener";
+    a.href = "https://wa.me/" + CONFIG.WHATSAPP.replace(/\D/g,"");
+    a.setAttribute("aria-label","Escríbenos por WhatsApp");
+    a.innerHTML = '<svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.4 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.9-1.1-4.7-4-4.9-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4.2.5.7 1.8.8 1.9.1.1.1.3 0 .5l-.4.6c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1l1.9.9c.2.1.4.2.4.3.1.1.1.6-.1 1.2z"/></svg>';
+    document.body.appendChild(a);
+    const slot = document.getElementById("whatsapp-slot");
+    if(slot) slot.innerHTML = '<a href="'+a.href+'" target="_blank" rel="noopener">Escríbenos</a>';
+  }
+
+  // Config pública (datos de transferencia), en segundo plano
+  fetch(API_BASE + "?accion=config").then(r=>r.json()).then(c=>{ configWeb = c; }).catch(()=>{});
+}
+
+function poblarSelectServicios(){
+  const sel = document.getElementById("sel-servicio");
+  if(!sel) return;
+  sel.innerHTML = '<option value="" disabled selected>Elige un servicio…</option>';
+  servicios.forEach((s,i)=>{
+    if(esConsultar(s)) return; // Estos se coordinan directo por WhatsApp, no se agendan aquí
+    const o = document.createElement("option");
+    o.value = i;
+    o.textContent = s.nombre + " — " + s.precioTexto;
+    sel.appendChild(o);
+  });
+}
+
+function servicioSeleccionado(){
+  const i = document.getElementById("sel-servicio").value;
+  return i==="" ? null : servicios[Number(i)];
+}
+
+/* --- Canales por servicio: AUDIO (asincrónico) / LLAMADA / VIDEOLLAMADA --- */
+let canalElegido = null;
+let varianteElegida = null;   // opción/combo elegido (duración, precio, etc.)
+let integrantesExtra = 0;     // solo Limpieza energética de casa
+const ETIQUETAS_CANAL = { AUDIO:"🎧 Audio (respuesta grabada)", LLAMADA:"📞 Llamada", VIDEOLLAMADA:"🎥 Videollamada" };
+
+/** Variantes/combos definidos para este servicio (o null si no tiene) */
+function variantesDe(s){
+  const o = OPCIONES_SERVICIO[s.nombre];
+  return (o && o.variantes) ? o.variantes : null;
+}
+
+/** Config de "integrante extra" para este servicio (o null si no aplica) */
+function extraIntegranteConfigDe(s){
+  const o = OPCIONES_SERVICIO[s.nombre];
+  return (o && o.extraIntegrante) ? o.extraIntegrante : null;
+}
+
+/** Combina el servicio base con la variante elegida (si hay) */
+function datosEfectivos(s, variante){
+  const canalesBase = (s.canales && s.canales.length) ? s.canales : (s.modalidad === "ASINCRONICA" ? ["AUDIO"] : []);
+  return {
+    duracion: (variante && variante.duracion) || s.duracion,
+    modalidadBase: (variante && variante.modalidad) || s.modalidad,
+    canales: (variante && variante.canales && variante.canales.length) ? variante.canales : canalesBase
+  };
+}
+
+/** Monto total a pagar (100% del servicio; ya no se cobra anticipo) */
+function montoTotal(s, variante, extra){
+  extra = extra || 0;
+  let base = (variante && typeof variante.precio === "number") ? variante.precio : s.precioNum;
+  if(base === null || base === undefined) return null;
+  const cfgExtra = extraIntegranteConfigDe(s);
+  if(cfgExtra && extra > 0) base += cfgExtra.precio * extra;
+  return base;
+}
+
+/** Reescribe el resumen de la reserva con los datos actuales (variante, canal, hora, integrantes) */
+function renderResumen(){
+  const s = servicioSeleccionado();
+  if(!s) return;
+  const d = datosEfectivos(s, varianteElegida);
+  const esAsinc = (d.modalidadBase === "ASINCRONICA") || canalElegido === "AUDIO";
+  const total = montoTotal(s, varianteElegida, integrantesExtra);
+
+  let linea = "<strong>" + s.nombre + (varianteElegida ? " — " + varianteElegida.label : "") + "</strong><br>";
+  if(esAsinc){
+    linea += "🎧 Entrega por audio · máx. " + s.plazoDias + " días hábiles<br>";
+  }else if(fechaElegida && slotElegido){
+    linea += "📅 " + etiquetaFecha(fechaElegida) + " a las " + slotElegido + " hrs · " + d.duracion + " min" +
+      (canalElegido && canalElegido!=="AUDIO" ? " · " + (canalElegido==="VIDEOLLAMADA"?"Videollamada":"Llamada") : "") + "<br>";
+  }
+  const cfgExtra = extraIntegranteConfigDe(s);
+  if(cfgExtra && integrantesExtra > 0){
+    linea += "➕ " + integrantesExtra + " integrante" + (integrantesExtra>1?"s":"") + " extra ($" +
+      (cfgExtra.precio*integrantesExtra).toLocaleString("es-CL") + ")<br>";
+  }
+  linea += "💜 Total a transferir: <strong>" +
+    (total ? "$" + total.toLocaleString("es-CL") : "por confirmar contigo") + "</strong>";
+  document.getElementById("resumen").innerHTML = linea;
+}
+
+/** Muestra u oculta el stepper de "integrantes extra" (solo Limpieza energética de casa) */
+function actualizarVisibilidadIntegrantes(s){
+  const grupo = document.getElementById("grupo-integrantes");
+  if(extraIntegranteConfigDe(s)){
+    grupo.classList.remove("oculto");
+  }else{
+    grupo.classList.add("oculto");
+    integrantesExtra = 0;
+    const input = document.getElementById("in-integrantes-extra");
+    if(input) input.value = 0;
+  }
+}
+
+/** Ajusta el formulario según el servicio elegido */
+function alCambiarServicio(){
+  const s = servicioSeleccionado();
+  ocultarError(); slotElegido = null; fechaElegida = null; canalElegido = null; varianteElegida = null; integrantesExtra = 0;
+  document.getElementById("slots").innerHTML = "";
+  document.getElementById("estado-slots").textContent = "";
+  document.getElementById("bloque-datos").classList.add("oculto");
+  document.getElementById("bloque-agendada").classList.add("oculto");
+  document.getElementById("info-asinc").classList.add("oculto");
+  document.getElementById("grupo-canal").classList.add("oculto");
+  document.getElementById("grupo-variante").classList.add("oculto");
+  document.getElementById("grupo-integrantes").classList.add("oculto");
+  const inExtra = document.getElementById("in-integrantes-extra");
+  if(inExtra) inExtra.value = 0;
+  if(!s) return;
+
+  const variantes = variantesDe(s);
+  if(variantes && variantes.length > 1){
+    mostrarSelectorVariantes(s, variantes);
+  }else{
+    varianteElegida = (variantes && variantes.length === 1) ? variantes[0] : null;
+    continuarConCanal(s);
+  }
+}
+
+/** Muestra los chips de variante/combo (ej: 30 min / 1 hora, o "solo" vs "combo") */
+function mostrarSelectorVariantes(s, variantes){
+  const grupo = document.getElementById("grupo-variante");
+  const cont = document.getElementById("variantes");
+  cont.innerHTML = "";
+  variantes.forEach(v=>{
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "slot-chip";
+    b.textContent = v.label + " — $" + v.precio.toLocaleString("es-CL");
+    b.onclick = ()=>{
+      document.querySelectorAll("#variantes .slot-chip").forEach(x=>x.classList.remove("elegido"));
+      b.classList.add("elegido");
+      varianteElegida = v;
+      continuarConCanal(s);
+    };
+    cont.appendChild(b);
+  });
+  grupo.classList.remove("oculto");
+}
+
+/** Una vez elegida la variante (si aplica), sigue con el canal (audio/llamada/videollamada) */
+function continuarConCanal(s){
+  const d = datosEfectivos(s, varianteElegida);
+  const canales = d.canales;
+  const grupoCanal = document.getElementById("grupo-canal");
+  if(canales.length > 1){
+    // El paciente elige cómo quiere su sesión
+    const cont = document.getElementById("canales");
+    cont.innerHTML = "";
+    canales.forEach(c=>{
+      const b = document.createElement("button");
+      b.type = "button"; b.className = "slot-chip";
+      b.textContent = ETIQUETAS_CANAL[c] || c;
+      b.onclick = ()=>{
+        document.querySelectorAll("#canales .slot-chip").forEach(x=>x.classList.remove("elegido"));
+        b.classList.add("elegido");
+        aplicarCanal(s, c);
+      };
+      cont.appendChild(b);
+    });
+    grupoCanal.classList.remove("oculto");
+  }else{
+    grupoCanal.classList.add("oculto");
+    aplicarCanal(s, canales[0] || "");
+  }
+}
+
+/** Muestra el flujo asincrónico (audio) o el agendado (llamada/videollamada/por defecto) */
+function aplicarCanal(s, canal){
+  canalElegido = canal || null;
+  slotElegido = null; fechaElegida = null;
+  document.getElementById("slots").innerHTML = "";
+  document.getElementById("estado-slots").textContent = "";
+  document.getElementById("bloque-datos").classList.add("oculto");
+  const bAgendada = document.getElementById("bloque-agendada");
+  const infoAsinc = document.getElementById("info-asinc");
+  const d = datosEfectivos(s, varianteElegida);
+  const esAsinc = (d.modalidadBase === "ASINCRONICA") || canal === "AUDIO";
+
+  actualizarVisibilidadIntegrantes(s);
+
+  if(esAsinc){
+    bAgendada.classList.add("oculto");
+    infoAsinc.innerHTML = "🎧 <strong>Modalidad audio:</strong> no necesitas elegir hora. " +
+      "Recibirás tu respuesta grabada dentro de un máximo de <strong>" +
+      s.plazoDias + " días hábiles</strong> desde la confirmación de tu pago.";
+    infoAsinc.classList.remove("oculto");
+    renderResumen();
+    document.getElementById("bloque-datos").classList.remove("oculto");
+  }else{
+    infoAsinc.classList.add("oculto");
+    bAgendada.classList.remove("oculto");
+    cargarDiasDisponibles(s);
+  }
+}
+
+/* ---------- Calendario mensual con días bloqueados ---------- */
+let diasDisp = new Set();   // fechas 'YYYY-MM-DD' con horas libres
+let mesVista = null;        // primer día del mes mostrado
+let fechaElegida = null;
+
+/** Consulta los días con horas libres y dibuja el calendario */
+async function cargarDiasDisponibles(s){
+  const estado = document.getElementById("estado-slots");
+  const grid = document.getElementById("cal-grid");
+  document.getElementById("cal-mes").textContent = "Buscando…";
+  grid.innerHTML = "";
+  estado.textContent = "";
+  try{
+    const duracion = datosEfectivos(s, varianteElegida).duracion;
+    const r = await fetch(API_BASE + "?accion=dias&duracion=" + duracion);
+    const dias = await r.json();
+    diasDisp = new Set(Array.isArray(dias) ? dias : []);
+    const hoy = new Date();
+    // Mostrar el mes del primer día disponible (o el actual si no hay ninguno)
+    if(diasDisp.size > 0){
+      const p = [...diasDisp][0].split("-").map(Number);
+      mesVista = new Date(p[0], p[1]-1, 1);
+    }else{
+      mesVista = new Date(hoy.getFullYear(), hoy.getMonth(), 1);
+      estado.textContent = "No hay horas libres en las próximas semanas. Escríbenos por WhatsApp \u{1F98B}";
+    }
+    renderCalendario();
+  }catch(e){
+    document.getElementById("cal-mes").textContent = "Error";
+    estado.textContent = "No pudimos consultar la agenda. Recarga la página e intenta de nuevo.";
+  }
+}
+
+function cambiarMes(delta){
+  if(!mesVista) return;
+  mesVista = new Date(mesVista.getFullYear(), mesVista.getMonth()+delta, 1);
+  renderCalendario();
+}
+
+function renderCalendario(){
+  const grid = document.getElementById("cal-grid");
+  const y = mesVista.getFullYear(), m = mesVista.getMonth();
+  const etiqueta = mesVista.toLocaleDateString("es-CL", {month:"long", year:"numeric"});
+  document.getElementById("cal-mes").textContent = etiqueta.charAt(0).toUpperCase()+etiqueta.slice(1);
+
+  // Límites de navegación: mes actual → mes del último día disponible
+  const hoy = new Date();
+  const mesMin = new Date(hoy.getFullYear(), hoy.getMonth(), 1);
+  let mesMax = mesMin;
+  if(diasDisp.size > 0){
+    const ult = [...diasDisp].sort().pop().split("-").map(Number);
+    mesMax = new Date(ult[0], ult[1]-1, 1);
+  }
+  document.getElementById("cal-prev").disabled = (mesVista <= mesMin);
+  document.getElementById("cal-next").disabled = (mesVista >= mesMax);
+
+  grid.innerHTML = "";
+  const offset = (new Date(y, m, 1).getDay() + 6) % 7; // semana parte en lunes
+  const diasMes = new Date(y, m+1, 0).getDate();
+  for(let i=0; i<offset; i++) grid.appendChild(document.createElement("span"));
+  for(let d=1; d<=diasMes; d++){
+    const f = y + "-" + String(m+1).padStart(2,"0") + "-" + String(d).padStart(2,"0");
+    if(diasDisp.has(f)){
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "cal-dia disp" + (f===fechaElegida ? " sel" : "");
+      b.textContent = d;
+      b.onclick = ()=>{ fechaElegida = f; renderCalendario(); buscarHoras(); };
+      grid.appendChild(b);
+    }else{
+      const s = document.createElement("span");
+      s.className = "cal-dia off";
+      s.textContent = d;
+      grid.appendChild(s);
+    }
+  }
+}
+
+/** '2026-07-13' → 'lunes 13 de julio' */
+function etiquetaFecha(fechaStr){
+  const p = fechaStr.split("-").map(Number);
+  const d = new Date(p[0], p[1]-1, p[2]);
+  const txt = d.toLocaleDateString("es-CL", {weekday:"long", day:"numeric", month:"long"});
+  return txt.charAt(0).toUpperCase() + txt.slice(1);
+}
+
+/** Validaciones de contacto (mismas reglas que el backend) */
+function correoValido(c){ return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(c); }
+function telefonoValido(t){
+  const digitos = String(t).replace(/\D/g, "");
+  return digitos.length >= 8 && digitos.length <= 15;
+}
+
+async function buscarHoras(){
+  const s = servicioSeleccionado();
+  const fecha = fechaElegida;
+  const estado = document.getElementById("estado-slots");
+  const cont = document.getElementById("slots");
+  ocultarError(); slotElegido = null;
+  document.getElementById("bloque-datos").classList.add("oculto");
+  cont.innerHTML = "";
+  if(!s){ mostrarError("Primero elige un servicio."); return; }
+  if(!fecha){ mostrarError("Elige una fecha."); return; }
+  estado.textContent = "Buscando horas disponibles…";
+  try{
+    const duracion = datosEfectivos(s, varianteElegida).duracion;
+    const r = await fetch(API_BASE + "?accion=slots&fecha=" + fecha + "&duracion=" + duracion);
+    const horas = await r.json();
+    estado.textContent = "";
+    if(horas.error){ mostrarError(horas.error); return; }
+    if(horas.length===0){
+      estado.textContent = "No quedan horas para ese día. Prueba otra fecha \u{1F98B}";
+      return;
+    }
+    horas.forEach(h=>{
+      const b = document.createElement("button");
+      b.type = "button"; b.className = "slot-chip"; b.textContent = h;
+      b.onclick = ()=>{ elegirSlot(h, b); };
+      cont.appendChild(b);
+    });
+  }catch(e){
+    estado.textContent = "";
+    mostrarError("No pudimos consultar la agenda. Intenta de nuevo en un momento.");
+  }
+}
+
+function elegirSlot(hora, boton){
+  slotElegido = hora;
+  document.querySelectorAll("#slots .slot-chip").forEach(x=>x.classList.remove("elegido"));
+  boton.classList.add("elegido");
+  renderResumen();
+  document.getElementById("bloque-datos").classList.remove("oculto");
+}
+
+async function enviarReserva(){
+  ocultarError();
+  const s = servicioSeleccionado();
+  const d = datosEfectivos(s, varianteElegida);
+  // Asincrónico si el servicio/variante lo es, o si el paciente eligió canal AUDIO
+  const esAsinc = s && ((d.modalidadBase === "ASINCRONICA") || canalElegido === "AUDIO");
+  const fecha = fechaElegida;
+  const nombre = document.getElementById("in-nombre").value.trim();
+  const telefonoBruto = document.getElementById("in-telefono").value.trim();
+  const correo = document.getElementById("in-correo").value.trim();
+  if(!esAsinc && !slotElegido){ mostrarError("Elige una hora."); return; }
+  if(!nombre || !telefonoBruto || !correo){ mostrarError("Completa tu nombre, teléfono y correo."); return; }
+  if(!telefonoValido(telefonoBruto)){ mostrarError("El teléfono no parece válido. Usa formato +56 9 1234 5678."); return; }
+  if(!correoValido(correo)){ mostrarError("El correo no parece válido. Revísalo (ej: nombre@correo.cl)."); return; }
+  if(!document.getElementById("chk-consent").checked){ mostrarError("Debes autorizar el tratamiento de tus datos para reservar."); return; }
+
+  // Se guarda TODO JUNTO, sin espacios (ej: +56912345678)
+  const telefono = "+" + telefonoBruto.replace(/\D/g,"");
+  const btn = document.getElementById("btn-reservar");
+  btn.disabled = true; btn.textContent = "Reservando…";
+  const total = montoTotal(s, varianteElegida, integrantesExtra);
+  try{
+    const r = await fetch(API_BASE, {
+      method:"POST",
+      body: JSON.stringify({
+        accion:"reservar", servicio:s.nombre,
+        opcion: varianteElegida ? varianteElegida.label : "",
+        modalidad: esAsinc ? "ASINCRONICA" : "AGENDADA",
+        plazoDias:s.plazoDias, canal:canalElegido||"",
+        fecha: esAsinc ? "" : fecha, hora: esAsinc ? "" : slotElegido,
+        duracion:d.duracion, integrantesExtra: integrantesExtra || 0,
+        nombre:nombre, telefono:telefono, correo:correo,
+        montoAnticipo: total ? "$"+total.toLocaleString("es-CL") : ""
+      })
+    });
+    const res = await r.json();
+    if(!res.ok){ mostrarError(res.error || "No se pudo reservar."); btn.disabled=false; btn.textContent="Reservar mi hora"; return; }
+    idReserva = res.id || null;
+    mostrarExito(s, fecha, total);
+  }catch(e){
+    mostrarError("No pudimos enviar tu reserva. Revisa tu conexión e intenta de nuevo.");
+    btn.disabled = false; btn.textContent = "Reservar mi hora";
+  }
+}
+
+function mostrarExito(s, fecha, total){
+  document.getElementById("form-reserva").classList.add("oculto");
+  const dl = document.getElementById("datos-transfer");
+  const c = configWeb || {};
+  const filas = [
+    ["Banco", c.Banco], ["Tipo de cuenta", c.TipoCuenta], ["N° de cuenta", c.NumeroCuenta],
+    ["Titular", c.TitularNombre], ["RUT", c.TitularRut], ["Correo", c.CorreoTransferencias],
+    ["Monto", total ? "$"+total.toLocaleString("es-CL") : "Te lo confirmaremos por mensaje"]
+  ];
+  dl.innerHTML = filas
+    .filter(f=>f[1] && String(f[1]).toUpperCase()!=="PENDIENTE")
+    .map(f=>"<dt>"+f[0]+"</dt><dd>"+f[1]+"</dd>").join("") ||
+    "<dd>Te enviaremos los datos de transferencia por mensaje.</dd>";
+  const d = datosEfectivos(s, varianteElegida);
+  const fueAsinc = (d.modalidadBase === "ASINCRONICA") || canalElegido === "AUDIO";
+  document.getElementById("exito-detalle").innerHTML =
+    fueAsinc
+      ? "🎧 Recibirás tu <strong>audio</strong> dentro de un máximo de <strong>" + s.plazoDias + " días hábiles</strong> desde que confirmemos tu pago."
+      : "Tu hora: <strong>" + etiquetaFecha(fecha) + " a las " + slotElegido + " hrs</strong>" +
+        (canalElegido ? " por <strong>" + (canalElegido==="VIDEOLLAMADA"?"videollamada":"llamada") + "</strong>" : "") + ".";
+  // Botón de WhatsApp con el mensaje listo (sin mencionar el servicio).
+  // Se usa \u{1F98B} (escape unicode) en vez del emoji literal para evitar que
+  // se corrompa (rombo con "?") si el archivo se 
