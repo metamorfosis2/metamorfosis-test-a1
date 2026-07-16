@@ -53,7 +53,7 @@
   /* --- Video protagonista del hero (animación del logo), recortado a círculo --- */
   .hero-media{position:relative;width:clamp(220px,32vw,360px);aspect-ratio:1/1;margin:0 auto 1.6rem;border-radius:50%;overflow:hidden;box-shadow:0 0 0 6px rgba(201,162,39,.16),var(--sombra);background:var(--lila-bg)}
   .hero-media img,.hero-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-  .hero-media video{transition:opacity .45s ease}
+  .hero-media video{transition:opacity .45s ease;transform:translateZ(0);-webkit-transform:translateZ(0);backface-visibility:hidden;will-change:transform}
   .hero .script{font-family:'Dancing Script',cursive;font-weight:700;font-size:clamp(2rem,5vw,3.2rem);color:var(--morado-suave)}
   .hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.6rem,6vw,4.2rem);color:var(--morado-oscuro);letter-spacing:-.5px;margin:.5rem 0 .9rem}
   .hero p{max-width:560px;margin:0 auto 2rem;font-size:1.08rem}
@@ -1396,13 +1396,15 @@ document.getElementById("btn-testimonio").onclick = enviarTestimonio;
      VIDEO DEL HERO (animación del logo) — independiente del bloque de
      arriba, no toca servicios/testimonios/FAQ/agendador ni Code.gs.
 
-     - Carga el .mp4 SOLO en pantallas ≥680px, sin "Ahorro de datos" y
-       sin "reducir movimiento": en mobile/datos limitados se queda con
-       el PNG (hero-logo-poster.png, el último frame exacto del video),
-       para no gastarle 2.4MB de plan a nadie desde el celular.
+     - Carga el .mp4 también en mobile (a pedido de Pato). Solo se salta si el
+       navegador/SO tiene activado "Ahorro de datos" o "reducir movimiento": en
+       esos casos se queda con el PNG (hero-logo-poster.png, el último frame
+       exacto del video), para no gastarle plan de datos a nadie sin permiso.
      - El loop lo maneja el atributo "loop" nativo del <video>: un solo
        archivo, una sola sesión de decodificación, sin trucos de JS que
        puedan fallar en algunos navegadores.
+     - El video se descarga completo a memoria antes de reproducirlo (blob),
+       para que no se corte a mitad de camino esperando más datos de red.
 ================================================================= -->
 <script>
 (function(){
@@ -1413,9 +1415,10 @@ document.getElementById("btn-testimonio").onclick = enviarTestimonio;
   var prefiereMenosMovimiento = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var conexion = navigator.connection || navigator.webkitConnection || navigator.mozConnection;
   var ahorroDatos = !!(conexion && conexion.saveData);
-  var pantallaGrande = window.matchMedia("(min-width: 680px)").matches;
-
-  if(prefiereMenosMovimiento || ahorroDatos || !pantallaGrande){
+  // Antes el video se saltaba en pantallas angostas (<680px) para no gastar datos
+  // en celulares. A pedido de Pato, ahora se muestra también en mobile — solo se
+  // respeta "reducir movimiento" y el modo ahorro de datos del navegador/SO.
+  if(prefiereMenosMovimiento || ahorroDatos){
     return; // se queda con el PNG estático (poster) — nada de video, nada de descarga extra
   }
 
