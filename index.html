@@ -265,8 +265,6 @@
     <video id="hero-video-a" muted playsinline loop preload="none" poster="hero-logo-poster.png" style="opacity:0">
       Tu navegador no soporta reproducción de video HTML5.
     </video>
-    <!-- Video B: solo se usa unos milisegundos, para disimular con un crossfade el corte del loop (ver script abajo) -->
-    <video id="hero-video-b" muted playsinline preload="none" style="opacity:0;pointer-events:none"></video>
   </div>
   <div class="script">Es momento del cambio</div>
   <h1>Metamorfosis</h1>
@@ -1402,19 +1400,15 @@ document.getElementById("btn-testimonio").onclick = enviarTestimonio;
        sin "reducir movimiento": en mobile/datos limitados se queda con
        el PNG (hero-logo-poster.png, el último frame exacto del video),
        para no gastarle 2.4MB de plan a nadie desde el celular.
-     - El clip no cierra el loop perfecto cuadro a cuadro. Sin editar el
-       archivo, la mejor solución práctica es un crossfade: un segundo
-       <video> (mismo archivo) arranca desde el cuadro 0 un poco ANTES
-       de que el primero llegue a su último cuadro, y se hace un fundido
-       cruzado de ~0.4s entre ambos. El ojo nunca ve el corte exacto,
-       solo una disolución suave entre "casi el final" y "el inicio".
+     - El loop lo maneja el atributo "loop" nativo del <video>: un solo
+       archivo, una sola sesión de decodificación, sin trucos de JS que
+       puedan fallar en algunos navegadores.
 ================================================================= -->
 <script>
 (function(){
   var media = document.getElementById("hero-media");
   var videoA = document.getElementById("hero-video-a");
-  var videoB = document.getElementById("hero-video-b");
-  if(!media || !videoA || !videoB) return;
+  if(!media || !videoA) return;
 
   var prefiereMenosMovimiento = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var conexion = navigator.connection || navigator.webkitConnection || navigator.mozConnection;
@@ -1425,40 +1419,18 @@ document.getElementById("btn-testimonio").onclick = enviarTestimonio;
     return; // se queda con el PNG estático (poster) — nada de video, nada de descarga extra
   }
 
+  // NOTA: antes había una segunda copia del video (videoB) para disimular con un
+  // crossfade el corte del loop. Se quitó: dos videos decodificando a la vez
+  // producía errores de reproducción en algunos navegadores (Edge). Con una sola
+  // copia, el loop lo maneja el propio atributo "loop" del <video>, sin JS extra.
   var SRC = "hero-logo.mp4";
   videoA.src = SRC;
-  videoB.src = SRC;
   videoA.load();
 
   videoA.addEventListener("canplay", function(){
     videoA.play().catch(function(){ /* autoplay bloqueado: se queda el poster */ });
     videoA.style.opacity = "1";
   }, { once:true });
-
-  var enCrossfade = false;
-  var ultimoTiempo = 0;
-  var UMBRAL_SEG = 0.45; // arranca el fundido cuando falten ~0.45s para el final
-
-  videoA.addEventListener("timeupdate", function(){
-    var dur = videoA.duration;
-    if(!dur || isNaN(dur)) return;
-    var restante = dur - videoA.currentTime;
-
-    if(!enCrossfade && restante > 0 && restante < UMBRAL_SEG){
-      enCrossfade = true;
-      try{ videoB.currentTime = 0; }catch(e){}
-      videoB.play().catch(function(){});
-      videoB.style.opacity = "1";
-    }
-
-    // El loop nativo de videoA ya reinició la reproducción: el tiempo salta hacia atrás
-    if(videoA.currentTime < ultimoTiempo - 0.5){
-      videoB.style.opacity = "0";
-      setTimeout(function(){ videoB.pause(); }, 450);
-      enCrossfade = false;
-    }
-    ultimoTiempo = videoA.currentTime;
-  });
 })();
 </script>
 </body>
