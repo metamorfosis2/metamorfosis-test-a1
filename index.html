@@ -262,7 +262,7 @@
     <!-- Fallback estático: el último frame EXACTO del video. Se ve siempre por debajo, así que si el
          video no carga (o el navegador no lo soporta) no hay ningún salto visual. -->
     <img id="hero-poster-img" src="hero-logo-poster.png" alt="Metamorfosis — mariposa dorada" onerror="this.style.display='none'">
-    <video id="hero-video-a" muted playsinline loop preload="none" style="opacity:0">
+    <video id="hero-video-a" muted playsinline preload="none" style="opacity:0">
       Tu navegador no soporta reproducción de video HTML5.
     </video>
   </div>
@@ -1400,9 +1400,10 @@ document.getElementById("btn-testimonio").onclick = enviarTestimonio;
        navegador/SO tiene activado "Ahorro de datos" o "reducir movimiento": en
        esos casos se queda con el PNG (hero-logo-poster.png, el último frame
        exacto del video), para no gastarle plan de datos a nadie sin permiso.
-     - El loop lo maneja el atributo "loop" nativo del <video>: un solo
-       archivo, una sola sesión de decodificación, sin trucos de JS que
-       puedan fallar en algunos navegadores.
+     - El loop empieza en el segundo 6 del clip (a pedido de Pato), no desde el
+       inicio: se salta el arranque de la animación y repite solo el tramo
+       final (6s en adelante). Se maneja con JS ("timeupdate"), sin el atributo
+       "loop" nativo, que siempre reinicia desde el segundo 0.
      - El video se descarga completo a memoria antes de reproducirlo (blob),
        para que no se corte a mitad de camino esperando más datos de red.
 ================================================================= -->
@@ -1434,7 +1435,9 @@ document.getElementById("btn-testimonio").onclick = enviarTestimonio;
     .then(function(blob){
       var url = URL.createObjectURL(blob);
       videoA.src = url;
+      var INICIO_LOOP = 6; // segundos — el loop repite desde acá, no desde el 0
       videoA.addEventListener("canplay", function(){
+        try{ videoA.currentTime = INICIO_LOOP; }catch(e){}
         videoA.play().catch(function(){ /* autoplay bloqueado: se queda el poster */ });
         videoA.style.opacity = "1";
         // Se oculta del todo la imagen de respaldo (no solo se tapa con el video):
@@ -1443,6 +1446,16 @@ document.getElementById("btn-testimonio").onclick = enviarTestimonio;
         // opacidad 1 — había que sacar la imagen de en medio directamente.
         if(posterImg) posterImg.style.display = "none";
       }, { once:true });
+      // Al llegar cerca del final, vuelve a INICIO_LOOP en vez de al segundo 0
+      // (por eso no se usa el atributo "loop" nativo, que siempre reinicia en 0).
+      videoA.addEventListener("timeupdate", function(){
+        var dur = videoA.duration;
+        if(!dur || isNaN(dur)) return;
+        if(videoA.currentTime >= dur - 0.08){
+          videoA.currentTime = INICIO_LOOP;
+          videoA.play().catch(function(){});
+        }
+      });
     })
     .catch(function(){ /* si falla la descarga, se queda con el PNG estático */ });
 })();
