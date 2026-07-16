@@ -1419,18 +1419,23 @@ document.getElementById("btn-testimonio").onclick = enviarTestimonio;
     return; // se queda con el PNG estático (poster) — nada de video, nada de descarga extra
   }
 
-  // NOTA: antes había una segunda copia del video (videoB) para disimular con un
-  // crossfade el corte del loop. Se quitó: dos videos decodificando a la vez
-  // producía errores de reproducción en algunos navegadores (Edge). Con una sola
-  // copia, el loop lo maneja el propio atributo "loop" del <video>, sin JS extra.
-  var SRC = "hero-logo.mp4";
-  videoA.src = SRC;
-  videoA.load();
-
-  videoA.addEventListener("canplay", function(){
-    videoA.play().catch(function(){ /* autoplay bloqueado: se queda el poster */ });
-    videoA.style.opacity = "1";
-  }, { once:true });
+  // NOTA: antes el navegador pedía el video por partes mientras se reproducía
+  // (streaming progresivo), y en varios navegadores eso generaba cortes a mitad
+  // de la reproducción cuando no llegaba a tiempo el siguiente pedazo. Para
+  // evitarlo, se descarga el archivo COMPLETO a memoria antes de reproducirlo
+  // (pesa ~2.4MB): una vez descargado no depende de más datos de red, así que
+  // no puede cortarse a medio camino.
+  fetch("hero-logo.mp4")
+    .then(function(r){ return r.blob(); })
+    .then(function(blob){
+      var url = URL.createObjectURL(blob);
+      videoA.src = url;
+      videoA.addEventListener("canplay", function(){
+        videoA.play().catch(function(){ /* autoplay bloqueado: se queda el poster */ });
+        videoA.style.opacity = "1";
+      }, { once:true });
+    })
+    .catch(function(){ /* si falla la descarga, se queda con el PNG estático */ });
 })();
 </script>
 </body>
