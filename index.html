@@ -261,8 +261,8 @@
   <div class="hero-media" id="hero-media">
     <!-- Fallback estático: el último frame EXACTO del video. Se ve siempre por debajo, así que si el
          video no carga (o el navegador no lo soporta) no hay ningún salto visual. -->
-    <img src="hero-logo-poster.png" alt="Metamorfosis — mariposa dorada" onerror="this.style.display='none'">
-    <video id="hero-video-a" muted playsinline loop preload="none" poster="hero-logo-poster.png" style="opacity:0">
+    <img id="hero-poster-img" src="hero-logo-poster.png" alt="Metamorfosis — mariposa dorada" onerror="this.style.display='none'">
+    <video id="hero-video-a" muted playsinline loop preload="none" style="opacity:0">
       Tu navegador no soporta reproducción de video HTML5.
     </video>
   </div>
@@ -1410,6 +1410,7 @@ document.getElementById("btn-testimonio").onclick = enviarTestimonio;
 (function(){
   var media = document.getElementById("hero-media");
   var videoA = document.getElementById("hero-video-a");
+  var posterImg = document.getElementById("hero-poster-img");
   if(!media || !videoA) return;
 
   var prefiereMenosMovimiento = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -1436,6 +1437,11 @@ document.getElementById("btn-testimonio").onclick = enviarTestimonio;
       videoA.addEventListener("canplay", function(){
         videoA.play().catch(function(){ /* autoplay bloqueado: se queda el poster */ });
         videoA.style.opacity = "1";
+        // Se oculta del todo la imagen de respaldo (no solo se tapa con el video):
+        // en algunos navegadores/GPU la imagen se quedaba pegada encima incluso con
+        // el video reproduciéndose por debajo, y no bastaba con que el video tuviera
+        // opacidad 1 — había que sacar la imagen de en medio directamente.
+        if(posterImg) posterImg.style.display = "none";
       }, { once:true });
     })
     .catch(function(){ /* si falla la descarga, se queda con el PNG estático */ });
